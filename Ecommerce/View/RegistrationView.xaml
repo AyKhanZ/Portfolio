@@ -1,0 +1,216 @@
+﻿<UserControl x:Class="UserEcommerceApp.View.RegistrationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserEcommerceApp.View" 
+             mc:Ignorable="d"  
+             
+             xmlns:mD="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:UserEcommerceApp.ViewModel"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="14"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="Transparent"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             Height="650" Width="920" 
+             d:DataContext="{d:DesignInstance vm:RegistrationViewModel}"
+             Name="MyRegistrationView"> 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Width="800" CornerRadius="10" Background="#FF0E1646" HorizontalAlignment="Center" Margin="0 50 0 0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FF0E1646"/>
+            </Border.Effect>
+            
+            <Grid Margin="10 10 10 10">
+            
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition/> 
+                    <RowDefinition/> 
+                </Grid.RowDefinitions>
+            
+                <Grid Grid.Column="0">
+            
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0" Height="250">
+                        <Button DockPanel.Dock="Bottom" Command="{Binding ImageDownoload}" 
+                                        mD:ButtonAssist.CornerRadius="10" Height="40" Width="150" 
+                                        Margin="0,0,0,0" Background="#FF4E93FF" BorderBrush="#FF4E93FF">
+                            <mD:PackIcon Kind = "FileImage" Width="30" Height="30"/>
+                        </Button>
+                        
+                        <Border DockPanel.Dock="Right" Height="180" Width="180" CornerRadius="90"  
+                                      BorderThickness="1.6" BorderBrush="Gray">
+                            <Border.Background>
+                                <ImageBrush Stretch="Fill" ImageSource="{Binding image}"/>
+                            </Border.Background>
+                        </Border>
+                    </DockPanel>
+
+                    <Grid Grid.Column="1" Margin="20 5 20 0">
+                        <Grid.RowDefinitions> 
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Column="1" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock  Text="Login:" Grid.Row="0"
+                                   FontSize="18" Foreground="#DDFFFFFF" />
+
+                            <Border Grid.Row="1" VerticalAlignment="Top" CornerRadius="5" Width="350" Background="#FF4E93FF" Height="40">
+                                <DockPanel>
+                                    <mD:PackIcon Kind="Contact" Margin="20 0 0 0"
+                                    DockPanel.Dock="Left" Height="35" Width="35"
+                                    VerticalAlignment="Center" Foreground="White"/>
+
+                                    <TextBox FontSize="18" MaxLength="15" Width="280" Text="{Binding user.Login}" 
+                                            Foreground="White" Margin="0 0 10 0"
+                                            mD:HintAssist.Hint = "Login"/>
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+                        
+                        <DockPanel Grid.Row="1" >
+                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Grid.Row="1">
+                                <TextBlock Text="Password:" FontSize="18" Foreground="#DDFFFFFF" />
+                                <Label x:Name="passwordWeaknessChecker" 
+                                       HorizontalAlignment="Right" FontWeight="Bold" Width="100"
+                                       Content="{Binding PasswordCheckerLabel, UpdateSourceTrigger=PropertyChanged}"
+                                       Foreground="{Binding ForegroundColor, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+
+                            <Border DockPanel.Dock="Bottom" CornerRadius="5" Width="350" Background="#FF4E93FF" Height="40">
+                                <DockPanel>
+                                    <mD:PackIcon Kind="Password" Margin="20 0 0 0" DockPanel.Dock="Left" Height="35" Width="35" VerticalAlignment="Center" Foreground="White"/>
+
+                                    <PasswordBox FontSize="18" MaxLength="15" Width="300" Foreground="White" Margin="0 5 10 0" mD:HintAssist.Hint = "Password"
+                                                 x:Name="Pass"/>
+                                </DockPanel>
+                            </Border>
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="2" >
+                            <TextBlock DockPanel.Dock="Top" Text="Re-Enter:" FontSize="18" Foreground="#DDFFFFFF" />
+
+                            <Border DockPanel.Dock="Bottom" CornerRadius="5" Width="350" Background="#FF4E93FF" Height="40">
+                                <DockPanel>
+                                    <mD:PackIcon Kind="Password" Margin="20 0 0 0" DockPanel.Dock="Left" Height="35" Width="35" VerticalAlignment="Center" Foreground="White"/>
+
+                                    <TextBox FontSize="18" MaxLength="15" Width="300" Foreground="White" Margin="0 5 10 0" mD:HintAssist.Hint = "Confirm password" x:Name="ConfirmPass"/>
+                                </DockPanel>
+                            </Border>
+                        </DockPanel>
+
+                    </Grid>
+                </Grid>
+ 
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Name:" VerticalAlignment="Bottom" FontSize="18" Margin="20,0,0,0" Foreground="#DDFFFFFF" />
+
+                        <Border Grid.Row="1" CornerRadius="5" Width="350" Background="#FF4E93FF" Height="40">
+                            <TextBox FontSize="18" MaxLength="15" Width="300" Foreground="White" Margin="0 0 10 0" mD:HintAssist.Hint = "Name"
+                                     Text="{Binding user.Name}"/>
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Surname:" VerticalAlignment="Bottom"  FontSize="18" Margin="20,0,0,0" Foreground="#DDFFFFFF" />
+
+                        <Border Grid.Row="1" CornerRadius="5" Width="350" Background="#FF4E93FF" Height="40">
+                                <TextBox FontSize="18" MaxLength="20" Width="300" Foreground="White" Margin="0 0 10 0" mD:HintAssist.Hint = "Surname"
+                                         Text="{Binding user.Surname}"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+  
+                <DockPanel Grid.Row="2">
+                    <TextBlock Text="Email:" VerticalAlignment="Center"
+                                   FontSize="18" Margin="65,0,0,0" Foreground="#DDFFFFFF" />
+                
+                    <Border CornerRadius="5" Width="600" Background="#FF4E93FF" Height="40">
+                        <DockPanel>
+                            <mD:PackIcon Kind="Email" Margin="20 0 0 0"
+                                DockPanel.Dock="Left" Height="35" Width="35"
+                                VerticalAlignment="Center" Foreground="White"/>
+
+                            <TextBox FontSize="18" MaxLength="70" Width="500" 
+                                     Text="{Binding user.Email}"
+                                Foreground="White" Margin="0 0 10 0"
+                                mD:HintAssist.Hint = "Email">
+                            </TextBox>
+                        </DockPanel>
+                    </Border>
+                </DockPanel>
+                
+                
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Margin="60 0 60 0 ">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Button  Content="Create Account" Grid.Column="1"
+                                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                FontSize="36" Width="350" Height="65" Foreground="White"
+                                mD:ButtonAssist.CornerRadius="15" Background="#FF4E93FF"
+                                Command="{Binding RegistrationCommand}"
+                                CommandParameter="{Binding ElementName=Pass}">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0"
+                                                          RenderingBias="Quality" 
+                                                          ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+
+
+
+
+            <Button Grid.Column="0" 
+                                Height="50" Width="100" 
+                                mD:ButtonAssist.CornerRadius="15" Background="#FF4E93FF"
+                                Command="{Binding BackToLoginCommand}"  
+                                HorizontalAlignment="Center">
+                <mD:PackIcon Kind="ArrowBack"
+                                     Foreground="White"
+                                     Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0"
+                                                          RenderingBias="Quality" 
+                                                          ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl> 

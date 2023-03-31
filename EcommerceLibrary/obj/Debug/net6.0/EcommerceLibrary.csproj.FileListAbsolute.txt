@@ -1,0 +1,36 @@
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.deps.json
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.pdb
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.AssemblyInfo.cs
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\refint\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.pdb
+C:\Users\HP\Desktop\Ecommerce App\EcommerceLibrary\obj\Debug\net6.0\ref\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.deps.json
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.pdb
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.AssemblyInfo.cs
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\refint\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.pdb
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\ref\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.deps.json
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\bin\Debug\net6.0\EcommerceLibrary.pdb
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.AssemblyInfo.cs
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\refint\EcommerceLibrary.dll
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\EcommerceLibrary.pdb
+C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\EcommerceLibrary\obj\Debug\net6.0\ref\EcommerceLibrary.dll
