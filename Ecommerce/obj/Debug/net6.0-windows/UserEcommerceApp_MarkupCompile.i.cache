@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\
 UserEcommerceApp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\HP\Desktop\Portfolio-EcommerceApp\Portfolio-Ecommerce\Ecommerce\App.xaml
-7-2025442211
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\App.xaml
+82134454828
 2-542557727
-25-1709425899
-2361753936859
-View\CardView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainView.xaml;View\OrdersView.xaml;View\ProductView.xaml;View\RegistrationView.xaml;
+27612155813
+2361774817598
+View\CardsView.xaml;View\CardView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainView.xaml;View\OrdersView.xaml;View\ProductView.xaml;View\RegistrationView.xaml;
 
 True
 

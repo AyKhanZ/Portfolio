@@ -1,5 +1,7 @@
 ﻿using EcommerceLibrary;
+
 namespace DbEcommerceApp.Data.Models;
+
 public class User :ISendable
 {
     public int Id { get; set; }
@@ -11,7 +13,10 @@ public class User :ISendable
     public string Icon { get; set; } = null!;
     public bool IsAdmin { get; set; }
      
+
+    public int UserDetailId { get; set; } 
     public UserDetail? UserDetail { get; set; }
-    public UserPayment? UserPayment { get; set; }
+
     public ICollection<Order>? Orders { get; set; }
+    public ICollection<UserPayment>? UserPayments { get; set; }
 }

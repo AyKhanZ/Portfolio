@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\Portfolio-EcommerceApp\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj": {}
+    "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\Portfolio-EcommerceApp\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj": {
+    "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\Portfolio-EcommerceApp\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj",
         "projectName": "EcommerceLibrary",
-        "projectPath": "C:\\Users\\HP\\Desktop\\Portfolio-EcommerceApp\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\Portfolio-EcommerceApp\\Portfolio-Ecommerce\\EcommerceLibrary\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

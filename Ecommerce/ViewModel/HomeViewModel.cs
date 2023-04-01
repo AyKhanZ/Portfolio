@@ -4,11 +4,10 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Media.Imaging;
+using System.Windows;
 using UserEcommerceApp.Message;
 using UserEcommerceApp.Services.Interfaces;
 
@@ -17,7 +16,7 @@ namespace UserEcommerceApp.ViewModel;
 public class HomeViewModel : ViewModelBase
 {
     public Uri? UserIcon { get; set; }
-    public User? User { get; set; } = new(); 
+    public User? User { get; set; } = new();
     public ObservableCollection<Category> Categories { get; set; } = new();
     public ObservableCollection<Product> Products { get; set; } = new();
     public Category SelectedCategory { get; set; } = new();
@@ -30,18 +29,20 @@ public class HomeViewModel : ViewModelBase
     {
         using (var context = new EcommerceDbContext())
         {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
+            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList(); 
+
             Categories = new ObservableCollection<Category>(categoriesFromDb);
+             
             foreach (var category in Categories)
             {
                 Products = new ObservableCollection<Product>(category.Products!.ToList());
             }
-        } 
+        }
         _navigationService = navigationService;
         _messenger = messenger;
         _messenger.Register<ParameterMessage>(this, param =>
         {
-            User = param?.Message as User; 
+            User = param?.Message as User;
             if (User?.Icon != null) UserIcon = new Uri(User?.Icon!); 
         });
     }
@@ -63,19 +64,19 @@ public class HomeViewModel : ViewModelBase
 
     #region RelayCommands
     public RelayCommand ExitCommand => new(() =>
-    { 
+    {
         _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage { Message = User });
     });
-    
-    public RelayCommand CardCommand => new(() =>
-    { 
-        _navigationService?.NavigateTo<CardViewModel>(new ParameterMessage { Message = User });
+
+    public RelayCommand MyCardsCommand => new(() =>
+    {
+        _navigationService?.NavigateTo<CardsViewModel>(new ParameterMessage { Message = User });
     });
-     
+
     public RelayCommand MyOrdersCommand => new(() =>
-    { 
+    {
         _navigationService?.NavigateTo<OrdersViewModel>(new ParameterMessage { Message = User });
     });
-    
+
     #endregion
 }

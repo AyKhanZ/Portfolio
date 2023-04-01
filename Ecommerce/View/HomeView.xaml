@@ -17,7 +17,7 @@
              FontFamily="{DynamicResource MaterialDesignFont}"
              Height="650" Width="920" 
              d:DataContext="{d:DesignInstance vm:HomeViewModel}">
-    <Border CornerRadius="10" > 
+    <Border CornerRadius="10" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"/>
@@ -50,18 +50,14 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Margin="10 20">
+
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2.5*"/>
-                                <RowDefinition Height="0.4*"/>
-                                <RowDefinition Height="0.4*"/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition Height="0.5*"/>
+                                <RowDefinition Height="5*"/>
                             </Grid.RowDefinitions>
 
-                            <Border Height="140" Width="140" CornerRadius="90" 
+                            <Border Height="135" Width="135" CornerRadius="90" 
                                     BorderThickness="1.6" BorderBrush="Gray">
                                 <Border.Background>
                                     <ImageBrush Stretch="Fill" ImageSource="{Binding UserIcon}"/>
@@ -69,73 +65,76 @@
                             </Border>
 
                             <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                       Text="{Binding User.Name}" TextAlignment="Center"
+                                       Text="{Binding User.Login}" TextAlignment="Center"
                                        FontSize="16" Width="160" Height="25" Foreground="White"/>
 
+                            <Grid Grid.Row="2">
 
-                            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                       Text="{Binding User.Surname}" TextAlignment="Center"
-                                       FontSize="16" Width="160" Height="30" Foreground="White"/>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-
-                            <Button Grid.Row="3" mD:ButtonAssist.CornerRadius="15" Height="40" Width="130"
-                                Command="{Binding MyOrdersCommand}" Content="My orders" 
-                                    Foreground="White" FontSize="16" BorderBrush="#FF2C6AFF" >
-                                <Button.Background>
-                                    <SolidColorBrush Color="#FF2C6AFF"/>
-                                </Button.Background>
-                                <Button.Effect>
+                                <Button Grid.Row="0" mD:ButtonAssist.CornerRadius="15" Height="35" Width="130"
+                                        Command="{Binding MyOrdersCommand}" Content="My orders" 
+                                        Foreground="White" FontSize="16" BorderBrush="#FF2C6AFF" >
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#FF2C6AFF"/>
+                                    </Button.Background>
+                                    <Button.Effect>
                                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                                </Button.Effect>
-                            </Button>
+                                    </Button.Effect>
+                                </Button>
+
+                                <Button Grid.Row="1" mD:ButtonAssist.CornerRadius="15" Height="35" Width="130"
+                                        Command="{Binding MyCardsCommand}" BorderBrush="#FF2C6AFF" >
+                                    <mD:PackIcon Kind = "Payment"  Height="30" Width="35" Foreground="White"/>
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#FF2C6AFF"/>
+                                    </Button.Background>
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                                    </Button.Effect>
+                                </Button>
 
 
-                            <Button Grid.Row="4" mD:ButtonAssist.CornerRadius="15" Height="40" Width="130"
-                                Command="{Binding CardCommand}" BorderBrush="#FF2C6AFF" >
-                                <mD:PackIcon Kind = "Payment"  Height="30" Width="35" Foreground="White"/>
-                                <Button.Background>
-                                    <SolidColorBrush Color="#FF2C6AFF"/>
-                                </Button.Background>
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                                </Button.Effect>
-                            </Button>
+                                <Button Grid.Row="2" mD:ButtonAssist.CornerRadius="15" Height="35" Width="130"
+                                        Command="{Binding ExitCommand}" BorderBrush="#FF2C6AFF" >
+                                    <mD:PackIcon Kind = "Basket" Height="30" Width="35" Foreground="White"/>
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#FF2C6AFF"/>
+                                    </Button.Background>
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                                    </Button.Effect>
+                                </Button>
 
 
-                            <Button Grid.Row="5" mD:ButtonAssist.CornerRadius="15" Height="40" Width="130"
-                                Command="{Binding ExitCommand}" BorderBrush="#FF2C6AFF" >
-                                <mD:PackIcon Kind = "Basket" Height="30" Width="35" Foreground="White"/>
-                                <Button.Background>
-                                    <SolidColorBrush Color="#FF2C6AFF"/>
-                                </Button.Background>
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                                </Button.Effect>
-                            </Button>
+                                <Button Grid.Row="3" mD:ButtonAssist.CornerRadius="15" Height="35" Width="130"
+                                        Command="{Binding SettingsCommand}" BorderBrush="#FF2C6AFF" >
+                                    <mD:PackIcon Kind = "Settings" Height="30" Width="35" Foreground="White"/>
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#FF2C6AFF"/>
+                                    </Button.Background>
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                                    </Button.Effect>
+                                </Button>
 
-
-                            <Button Grid.Row="6" mD:ButtonAssist.CornerRadius="15" Height="40" Width="130"
-                                Command="{Binding SettingsCommand}" BorderBrush="#FF2C6AFF" >
-                                <mD:PackIcon Kind = "Settings" Height="30" Width="35" Foreground="White"/>
-                                <Button.Background>
-                                    <SolidColorBrush Color="#FF2C6AFF"/>
-                                </Button.Background>
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                                </Button.Effect>
-                            </Button>
-
-
-                            <Button Grid.Row="7" mD:ButtonAssist.CornerRadius="15" Height="40" Width="130"
-                                Command="{Binding ExitCommand}" BorderBrush="#FF2C6AFF" >
-                                <mD:PackIcon Kind = "ExitRun" Height="30" Width="35" Foreground="White"/>
-                                <Button.Background>
-                                    <SolidColorBrush Color="#FF2C6AFF"/>
-                                </Button.Background>
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                                </Button.Effect>
-                            </Button>
+                                <Button Grid.Row="4" mD:ButtonAssist.CornerRadius="15" Height="35" Width="130"
+                                        Command="{Binding ExitCommand}" BorderBrush="#FF2C6AFF" >
+                                    <mD:PackIcon Kind = "ExitRun" Height="30" Width="35" Foreground="White"/>
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#FF2C6AFF"/>
+                                    </Button.Background>
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                                    </Button.Effect>
+                                </Button>
+                            </Grid>
                         </Grid>
 
                         <Grid Grid.Column="1">
@@ -240,182 +239,3 @@
     </Border>
 
 </UserControl>
-
-
-<!--
-    
-    
-    
-    
-<Border CornerRadius="10" >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" Background="#FF1F1E44">
-            <Grid Margin="20 50">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Button Grid.Row="0" mD:ButtonAssist.CornerRadius="15" Height="40" Width="120"
-                                Command="{Binding CardCommand}" Background="White">
-                    <mD:PackIcon Kind = "Payment" Height="30" Width="30" Foreground="Black"/>
-                </Button>
-
-                <Button Grid.Row="1" mD:ButtonAssist.CornerRadius="15" Height="40" Width="120"
-                                Command="{Binding MyOrdersCommand}" Content="My orders" Background="White" Foreground="Black"/>
-
-                <Button Grid.Row="2" mD:ButtonAssist.CornerRadius="15" Height="40" Width="120"
-                                Command="{Binding ExitCommand}" Background="White" >
-                    <mD:PackIcon Kind = "ExitRun" Height="30" Width="30" Foreground="Black"/>
-                </Button>
-            </Grid>
-        </Border>
-        <Grid Grid.Column="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.08*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <Border Grid.Row="0">
-                <Border.Background>
-                    <SolidColorBrush Color="#13133e"/>
-                </Border.Background>
-                <Grid Margin="10 0 10 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <DockPanel Grid.Column="0">
-                            <mD:PackIcon Kind="Home" 
-                                     DockPanel.Dock="Left" Height="30" Width="30"
-                                     VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
-                            <TextBlock FontSize="18" Text="Home"
-                                     Height="20" Width="100" Foreground="#DDFFFFFF"
-                                     DockPanel.Dock="Right" Margin="10 0 0 0" 
-                                     VerticalAlignment="Center"/>
-                        </DockPanel>
-                    </Grid>
-
-                    <Grid Grid.Row="1" 
-                              Margin="0,0,0,5">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="0.3*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <mD:PackIcon Grid.Column="0" Kind="Money" 
-                                         Height="35" Width="35" HorizontalAlignment="Left"
-                                         VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
-                        <Label Grid.Column="1" HorizontalAlignment="Left" 
-                                   Content="{Binding User.UserPayment.Money,FallbackValue=0$}"
-                                   VerticalAlignment="Center" 
-                                   FontSize="18" Width="120" Height="30" 
-                                   Foreground="#DDFFFFFF"/>
-
-
-                        <mD:PackIcon Grid.Column="3" Kind="Account" 
-                                         Height="35" Width="35" HorizontalAlignment="Left"
-                                         VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
-                        <TextBlock Grid.Column="4" HorizontalAlignment="Left"
-                                       Text="{Binding User.Name}" VerticalAlignment="Top"
-                                       FontSize="16" Width="120" Height="20" Foreground="#DDFFFFFF"/>
-                        <TextBlock Grid.Column="4" HorizontalAlignment="Left"
-                                       Text="{Binding User.Surname}" VerticalAlignment="Bottom"
-                                       FontSize="16" Width="120" Height="20" Foreground="#DDFFFFFF"/>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                    </Grid>
-                </Grid>
-            </Border>
-
-            <Grid Grid.Row="1">
-                <Grid.Background>
-                    <SolidColorBrush Color="#FFD2D1EB"/>
-                </Grid.Background>
-
-                <ComboBox ItemsSource="{Binding Categories}" Margin="20 0 20 0"
-                          DisplayMemberPath="Name" Foreground="Black" BorderBrush="White" 
-                          SelectedItem="{Binding SelectedCategory}" />
-            </Grid>
-
-            <Border Grid.Row="2">
-                <ScrollViewer Background="#423e5d" Margin="2" >
-                    <ListView x:Name="ListViewProducts" 
-                                  ItemsSource="{Binding Products}" 
-                                  SelectedItem="{Binding SelectedProduct}"
-                                  ScrollViewer.CanContentScroll="True" 
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  Background="Transparent" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border HorizontalAlignment="Center" CornerRadius="10"
-                                        BorderThickness="1" BorderBrush="White"
-                                        Width="300" Height="350"
-                                        Padding="5" Background="#22202f">
-                                    <StackPanel Orientation="Vertical">
-                                        <DockPanel Height="210">
-                                            <Border Height="200"
-                                                        Padding="3 0 3 0"
-                                                        CornerRadius="10"
-                                                        BorderThickness="1.6" BorderBrush="Gray">
-                                                <Border.Background>
-                                                    <ImageBrush Stretch="Fill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
-                                                </Border.Background>
-                                            </Border>
-                                        </DockPanel>
-                                        <StackPanel VerticalAlignment="Center" Margin="0 9">
-                                            <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="White" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-                                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-                                            <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="3 0 0 0" TextAlignment="Left" Width="90" Foreground="White" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0\}$}" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                    </ListView>
-                </ScrollViewer>
-            </Border>
-        </Grid>
-    </Grid>
-    </Border>
-
-
-
-
-    -->

@@ -1,7 +1,9 @@
 ﻿using DbEcommerceApp.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+
 namespace DbEcommerceApp.Data.DbContexts;
+
 public class EcommerceDbContext : DbContext
 {
     public DbSet<Category> Categories { get; set; } 
@@ -11,6 +13,8 @@ public class EcommerceDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<UserDetail> UserDetails { get; set; }
     public DbSet<UserPayment> UserPayments { get; set; }
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         ConfigurationBuilder builder = new();
@@ -25,6 +29,8 @@ public class EcommerceDbContext : DbContext
 
         base.OnConfiguring(optionsBuilder);
     }
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>(entity =>
@@ -98,23 +104,35 @@ public class EcommerceDbContext : DbContext
             entity.Property(u => u.Icon).HasMaxLength(200);
             entity.Property(u => u.IsAdmin);
 
-            entity.HasIndex(u => u.Login)
-               .IsUnique();
+
+            entity.HasIndex(u => u.Login) .IsUnique();
+
 
             entity.HasMany(o => o.Orders).WithOne(u => u.User);
 
-            modelBuilder.Entity<User>()
-                        .HasOne(u => u.UserDetail)
-                        .WithOne(ud => ud.User)
-                        .HasForeignKey<UserDetail>(ud => ud.UserId)
-                        .OnDelete(DeleteBehavior.Cascade);
+            entity.HasMany(up => up.UserPayments).WithOne(u => u.User);
 
 
-            modelBuilder.Entity<User>()
-                        .HasOne(u => u.UserPayment)
-                        .WithOne(up => up.User)
-                        .HasForeignKey<UserPayment>(up => up.UserId)
-                        .OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(u => u.UserDetail)
+                .WithOne(ud => ud.User)
+                .HasForeignKey<UserDetail>(ud => ud.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+
+        modelBuilder.Entity<UserPayment>(entity =>
+        {
+            entity.HasKey(ud => ud.Id);
+            entity.Property(up => up.CVV).HasMaxLength(3);
+            entity.Property(up => up.EXP).HasMaxLength(5);
+            entity.Property(up => up.SixteenDigitCode).HasMaxLength(16);
+
+            entity.HasOne(u => u.User)
+                  .WithMany(u => u.UserPayments)
+                  .HasForeignKey(u => u.UserId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            //entity.HasOne(u => u.User).WithMany(ud => ud.UserPayments);
         });
 
         modelBuilder.Entity<UserDetail>(entity =>
@@ -129,15 +147,5 @@ public class EcommerceDbContext : DbContext
             entity.HasOne(u => u.User).WithOne(ud => ud.UserDetail);
         });
 
-        modelBuilder.Entity<UserPayment>(entity =>
-        {
-            entity.HasKey(ud => ud.Id);
-            entity.Property(up => up.Money);
-            entity.Property(up => up.CVV);
-            entity.Property(up => up.EXP).HasMaxLength(5);
-            entity.Property(up => up.SixteenDigitCode).HasMaxLength(16);
-
-            entity.HasOne(u => u.User).WithOne(up => up.UserPayment);
-        });
     }
 }

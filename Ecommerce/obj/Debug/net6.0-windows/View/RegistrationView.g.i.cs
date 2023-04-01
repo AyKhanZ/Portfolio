@@ -89,7 +89,7 @@ namespace UserEcommerceApp.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/UserEcommerceApp;V1.0.0.0;component/view/registrationview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/UserEcommerceApp;component/view/registrationview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\RegistrationView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

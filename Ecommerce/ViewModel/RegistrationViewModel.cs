@@ -15,7 +15,7 @@ using UserEcommerceApp.Services.Interfaces;
 
 namespace UserEcommerceApp.ViewModel;
 
-public class RegistrationViewModel : ViewModelBase, INotifyPropertyChanged
+public class RegistrationViewModel : ViewModelBase
 {
     public User? user { get; set; } = new();
     public BitmapImage? image { get; set; } = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/defUser.png"));
@@ -47,7 +47,7 @@ public class RegistrationViewModel : ViewModelBase, INotifyPropertyChanged
                 context.SaveChanges();
             }
             _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage() { Message = user });
-            user = new();
+            user = new(); 
             image = new(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/defUser.png"));
             return;
         }

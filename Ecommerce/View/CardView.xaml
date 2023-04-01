@@ -36,17 +36,14 @@
                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
                 </Border.Effect>
 
-                <Grid Height="350"  Width="550" HorizontalAlignment="Center">
+                <Grid Height="350"  Width="600" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.8*"/>
                         <RowDefinition Height="1.5*"/>
-
-                        <RowDefinition Height="0.8*"/>
-                        <RowDefinition Height="1.5*"/>
-
+ 
                         <RowDefinition Height="2.3*"/>
 
-                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Text="16 digit code:"
@@ -59,47 +56,42 @@
                              Text="{Binding UserPayment.SixteenDigitCode}" 
                              VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Row="2" Text="EXP:"
-                           HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                           Foreground="White" FontSize="18"/>
-                    <TextBox Grid.Row="3" FontSize="18" MaxLength="5" 
-                             Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray"
-                             mD:HintAssist.Hint=" 00 / 00" 
-                             Height="35" Width="80" HorizontalAlignment="Left"
-                             Text="{Binding UserPayment.EXP}" 
-                             VerticalAlignment="Center"/>
-                    <Grid Grid.Row="4">
+                    <Grid Grid.Row="2"> 
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"/>
-                            <RowDefinition Height="1.5*"/>
-                        </Grid.RowDefinitions>
-
-
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="CVV:"
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="EXP:"
                            HorizontalAlignment="Left" VerticalAlignment="Bottom"
                            Foreground="White" FontSize="18"/>
-                        <TextBox Grid.Column="0" Grid.Row="1" FontSize="18" MaxLength="3" 
+                        
+                        <TextBox Grid.Row="1" Grid.Column="0" FontSize="18" MaxLength="5" 
+                             Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray"
+                             mD:HintAssist.Hint=" 00 / 00" 
+                             Height="35" Width="80" HorizontalAlignment="Left"
+                             Text="{Binding UserPayment.EXP}" 
+                             VerticalAlignment="Center"/>
+                        
+                        
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="CVV:"
+                           HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                           Foreground="White" FontSize="18"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" FontSize="18" MaxLength="3" 
                              Foreground="White" Background="Transparent" CaretBrush="LightGray" BorderBrush="DarkGray"
                              mD:HintAssist.Hint=" 000" 
                              Height="35" Width="50" HorizontalAlignment="Left"
                              Text="{Binding UserPayment.CVV,FallbackValue=000}" 
                              VerticalAlignment="Center"/>
 
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Count of money:"
-                           HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                           Foreground="White" FontSize="18"/>
-                        <TextBox Grid.Column="1" Grid.Row="1" FontSize="18" 
-                             Foreground="White" Background="Transparent"
-                             CaretBrush="LightGray" BorderBrush="DarkGray"
-                             mD:HintAssist.Hint=" 0$" MaxLength="10"
-                             Height="35" Width="200" HorizontalAlignment="Left"
-                             Text="{Binding UserPayment.Money,FallbackValue=0$}" 
-                             VerticalAlignment="Center"/>
+
+
                     </Grid>
 
   
@@ -120,11 +112,11 @@
                             </Button.Effect>
                         </Button>
 
-                        <Button Content="Add money" Grid.Column="1"
+                        <Button Content="Add Card" Grid.Column="1"
                             HorizontalAlignment="Center" VerticalAlignment="Center" 
                             FontSize="28" Width="200" Height="50" Foreground="White"
                             mD:ButtonAssist.CornerRadius="15" Background="#FF2C6AFF"
-                            Command="{Binding AddMoneyCommand}">
+                            Command="{Binding AddCardCommand}">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="0"
                                                           RenderingBias="Quality" 

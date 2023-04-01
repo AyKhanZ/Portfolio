@@ -178,6 +178,9 @@ namespace DbEcommerceApp.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<int>("UserDetailId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Login")
@@ -238,8 +241,10 @@ namespace DbEcommerceApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CVV")
-                        .HasColumnType("int");
+                    b.Property<string>("CVV")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("EXP")
                         .IsRequired()
@@ -256,8 +261,7 @@ namespace DbEcommerceApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserPayments");
                 });
@@ -317,9 +321,9 @@ namespace DbEcommerceApp.Migrations
             modelBuilder.Entity("DbEcommerceApp.Data.Models.UserPayment", b =>
                 {
                     b.HasOne("DbEcommerceApp.Data.Models.User", "User")
-                        .WithOne("UserPayment")
-                        .HasForeignKey("DbEcommerceApp.Data.Models.UserPayment", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("UserPayments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -346,7 +350,7 @@ namespace DbEcommerceApp.Migrations
 
                     b.Navigation("UserDetail");
 
-                    b.Navigation("UserPayment");
+                    b.Navigation("UserPayments");
                 });
 #pragma warning restore 612, 618
         }

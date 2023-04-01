@@ -1,9 +1,9 @@
 ﻿namespace DbEcommerceApp.Data.Models;
+
 public class UserPayment
 {
     public int Id { get; set; }
-    public int Money { get; set; }
-    public int CVV { get; set; }
+    public string CVV { get; set; } = null!;
     public string EXP { get; set; } = null!;
     public string SixteenDigitCode { get; set; } = null!;
 

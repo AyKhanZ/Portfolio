@@ -31,6 +31,7 @@ public partial class App : Application
         Container.RegisterSingleton<HomeViewModel>();
         Container.RegisterSingleton<ProductViewModel>();
         Container.RegisterSingleton<CardViewModel>();
+        Container.RegisterSingleton<CardsViewModel>();
         Container.RegisterSingleton<OrdersViewModel>();
 
         Container.Verify();

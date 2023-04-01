@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vzuksGOXvnUgxbpevIl47kJjMe7yhLs/FB76xSYvhF6e50IFb4wZp+AqBlYjhyYohUubFlYU1S9ttmyRY1YeEg==",
+  "dgSpecHash": "RqxDH+WKlaKBr0aDwI+/IwfSJJbiyYyyZ7kiJHhvhp69i3QSxBuUBPsLiHCTHJuPwc3rOR9onEwIJrReNZW1Vw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\Portfolio-EcommerceApp\\Portfolio-Ecommerce\\Ecommerce\\UserEcommerceApp.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\Ecommerce\\UserEcommerceApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
