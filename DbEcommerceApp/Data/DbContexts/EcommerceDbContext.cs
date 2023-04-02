@@ -82,6 +82,7 @@ public class EcommerceDbContext : DbContext
             entity.Property(p => p.Name).IsRequired().HasMaxLength(50);
             entity.Property(p => p.Make).IsRequired().HasMaxLength(25);
             entity.Property(p => p.Description).IsRequired().HasMaxLength(1000);
+            entity.Property(p => p.IsInBasket);
 
             entity.HasOne(с => с.Category)
                   .WithMany(c => c.Products)

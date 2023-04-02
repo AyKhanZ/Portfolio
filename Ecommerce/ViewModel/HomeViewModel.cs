@@ -55,9 +55,10 @@ public class HomeViewModel : ViewModelBase
         set
         {
             _selectedProduct = value;
-            UserProductParameter userProductParameter = new(User!, _selectedProduct);
-            if (SelectedProduct != null) _navigationService?.NavigateTo<ProductViewModel>(new ParameterMessage { Message = userProductParameter });
 
+            UserProductParameter userProductParameter = new(User!, _selectedProduct);
+
+            if (SelectedProduct != null) _navigationService?.NavigateTo<ProductViewModel>(new ParameterMessage { Message = userProductParameter });
         }
     }
     #endregion

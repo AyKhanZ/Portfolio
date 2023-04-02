@@ -30,11 +30,14 @@ public class CardsViewModel : ViewModelBase
         _messenger.Register<ParameterMessage>(this, param =>
         {
             User = param?.Message as User;
-            using (var context = new EcommerceDbContext())
-            {  
-                var cardsFromDb = context.Set<UserPayment>().Where(up => up.User!.Login == User!.Login).ToList();
+            if (User != null)
+            {
+                using (var context = new EcommerceDbContext())
+                {
+                    var cardsFromDb = context.Set<UserPayment>().Where(up => up.User!.Login == User!.Login).ToList();
 
-                Cards = new ObservableCollection<UserPayment>(cardsFromDb); 
+                    Cards = new ObservableCollection<UserPayment>(cardsFromDb);
+                }
             }
         }); 
     }

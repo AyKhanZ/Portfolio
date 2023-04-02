@@ -21,115 +21,147 @@
 
     <Border CornerRadius="10" > 
         <Grid>
+            
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"/>
                 <RowDefinition Height="0.07*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            
+            
             <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" 
                   Text="MY ORDERS" Foreground="White" FontSize="14" Margin="10,0,0,0" />
 
-            <Border Grid.Row="2"  Width="800" Height="550" CornerRadius="10" VerticalAlignment="Center"
-                    Background="#FF0E1646" HorizontalAlignment="Center">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                </Border.Effect>
+            
+            
+            <Grid Grid.Row="2">
 
-                <Grid Height="500"  Width="700" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.5*"/> 
-                        <RowDefinition Height="3*"/>
-                    </Grid.RowDefinitions>
-  
-                    
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.7*"/>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                        </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="0.7*"/>
+                </Grid.RowDefinitions>
 
-                        <Button Grid.Column="0" Height="40" Width="60" 
-                                mD:ButtonAssist.CornerRadius="15" Background="#FF4E93FF"
-                                Command="{Binding BackCommand}" HorizontalAlignment="Center">
-                            <mD:PackIcon Kind="ArrowBack" Foreground="White" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Button>
+                <Border Grid.Row="0"  Width="600" Height="450" CornerRadius="10" VerticalAlignment="Center"
+                        Background="#FF0E1646" HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                    </Border.Effect>
 
-                        <Border  Grid.Column="1" Background="#FF4E93FF" CornerRadius="10" Height="35" Width="280">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="0.2*"/>
-                                </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Height="30"
-                                  Margin="10 0 10 0" 
-                                  Background="#FF4E93FF" Foreground="Black" BorderBrush="Black" 
-                                  mD:HintAssist.Hint="Search product"/>
+                    <Grid Height="400"  Width="550" HorizontalAlignment="Center">
 
-                                <Button Grid.Column="1" Width="30" Height="30"  mD:ButtonAssist.CornerRadius="15"
-                                    Command="{Binding SearchCommand}" Padding="2,2,2,2" Background="Black">
-                                    <mD:PackIcon Kind="Search" Width="20" Height="20"/>
-                                </Button>
-                            </Grid>
-                            
-                        </Border>
+                        <Border Margin="25" Grid.Row="0" Background="#FF4E93FF" CornerRadius="25">
 
-                        <Border  Grid.Column="2" Background="#FF4E93FF" CornerRadius="10" Height="35" Width="150">
-                            <ComboBox Height="30"
-                                  Margin="10" DisplayMemberPath="Name" 
-                                  Background="#FF4E93FF" Foreground="Black" BorderBrush="Black" 
-                                  mD:HintAssist.Hint="Laptops"
-                                  mD:ComboBoxAssist.ShowSelectedItem="True"
-                                  ItemsSource="{Binding Categories}" 
-                                  SelectedItem="{Binding SelectedCategory}" />
-                        </Border>
-                    </Grid>
-                    <Border Margin="25" Grid.Row="1" Background="#FF4E93FF" CornerRadius="25">
-                        
-                        <ScrollViewer  Margin="25" >
-                        <ListView x:Name="ListViewProducts" 
-                                  ItemsSource="{Binding Products}" 
-                                  SelectedItem="{Binding SelectedProduct}"
+                            <ScrollViewer  Margin="25" >
+                                <ListView x:Name="ListViewProducts" 
+                                  ItemsSource="{Binding Orders}" 
+                                  SelectedItem="{Binding SelectedOrder}"
                                   ScrollViewer.CanContentScroll="True" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   Background="Transparent" >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border HorizontalAlignment="Center" CornerRadius="10"
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border HorizontalAlignment="Center" CornerRadius="10"
                                         BorderThickness="1" BorderBrush="White"
                                         Width="300" Height="350"
                                         Padding="5" Background="#22202f">
-                                        <StackPanel Orientation="Vertical">
-                                            <DockPanel Height="210">
-                                                <Border Height="200"
+                                                <StackPanel Orientation="Vertical">
+                                                    <DockPanel Height="210">
+                                                        <Border Height="200"
                                                         Padding="3 0 3 0"
                                                         CornerRadius="10"
                                                         BorderThickness="1.6" BorderBrush="Gray">
-                                                    <Border.Background>
-                                                        <ImageBrush Stretch="Fill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
-                                                    </Border.Background>
-                                                </Border>
-                                            </DockPanel>
-                                            <StackPanel VerticalAlignment="Center" Margin="0 9">
-                                                <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="White" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-                                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-                                                <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="3 0 0 0" TextAlignment="Left" Width="90" Foreground="White" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0\}$}" />
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                    </ScrollViewer>
+                                                            <Border.Background>
+                                                                <ImageBrush Stretch="Fill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
+                                                            </Border.Background>
+                                                        </Border>
+                                                    </DockPanel>
+                                                    <StackPanel VerticalAlignment="Center" Margin="0 9">
+                                                        <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="White" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                                                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+                                                        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="3 0 0 0" TextAlignment="Left" Width="90" Foreground="White" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0\}$}" />
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+
+                    <Button Grid.Column="0" Height="50" Width="90" 
+                                mD:ButtonAssist.CornerRadius="15" Background="#FF4E93FF"
+                                Command="{Binding BackToHomeCommand}"  
+                                HorizontalAlignment="Center" BorderBrush="#FF4E93FF">
+                        <mD:PackIcon Kind="ArrowBack" Foreground="White" Width="100" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                        </Button.Effect>
+                    </Button>
+
+
+
+                    <Button Grid.Column="1" IsEnabled="{Binding IsEnabledToCancel}" mD:ButtonAssist.CornerRadius="15" Height="50" Width="150"
+                                            Command="{Binding DeleteOrderCommand}" BorderBrush="Red" >
+                        <mD:PackIcon Kind = "Cancel" Height="40" Width="40" Foreground="White"/>
+                        
+                        <Button.Background>
+                            <SolidColorBrush Color="#FFA20000"/>
+                        </Button.Background>
+                        
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Border  Grid.Column="2" Background="#FF4E93FF" CornerRadius="10" Height="60" Width="400">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBox Grid.Column="0" Height="40"
+                                            Margin="20 0 10 0" FontSize="22"
+                                            Background="#FF4E93FF" Foreground="Black" BorderBrush="Black" 
+                                            mD:HintAssist.Hint="Search order"/>
+
+                            <Button Grid.Column="1" Width="50" Height="50"  mD:ButtonAssist.CornerRadius="15"
+                                                Command="{Binding SearchOrderCommand}" Padding="2,2,2,2" BorderBrush="#FF2C6AFF">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FF2C6AFF"/>
+                                </Button.Background>
+                                <mD:PackIcon Kind="Search" Width="45" Height="45" Foreground="White"/>
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                                </Button.Effect>
+                            </Button>
+                        </Grid>
+
                     </Border>
+
                 </Grid>
-            </Border>
+                
+                
+            </Grid>
+            
         </Grid>
     </Border>
 </UserControl>

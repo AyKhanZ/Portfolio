@@ -26,7 +26,7 @@
                     Padding="5"
                     Background="#FF0E1646">
             <StackPanel Orientation="Vertical">
-                <DockPanel Height="200"> 
+                <DockPanel Height="200">
                     <Border Width="180" Height="170" CornerRadius="15" BorderThickness="1.6" BorderBrush="White">
                         <Border.Background>
                             <ImageBrush ImageSource="{Binding image}"/>
@@ -73,7 +73,7 @@
                                Height="25" HorizontalAlignment="Left"
                                Text="{Binding Product.Category.Name }" />
                     </DockPanel>
-                    
+
                     <DockPanel Margin="250 0 0 0">
                         <TextBlock DockPanel.Dock="Left" FontSize="20" HorizontalAlignment="Left"
                                Width="70" Height="28"  
@@ -82,69 +82,19 @@
                         <TextBlock DockPanel.Dock="Right" Width="175" Foreground="White" FontSize="18" 
                                Height="28" HorizontalAlignment="Left"
                                Text="{Binding Product.Price}" />
-                    </DockPanel> 
+                    </DockPanel>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <Grid Margin="50 0 50 0">
+        <Grid Margin="20 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*"/>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="1" Margin="20 10">
-                
-                <Grid.ColumnDefinitions> 
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="0.5*"/>
-                </Grid.ColumnDefinitions>
-
-
-                <Button Grid.Column="0" Command="{Binding DownQuantityCommand}" 
-                        IsEnabled="{Binding IsEnabledToQuantityDown}" 
-                        mD:ButtonAssist.CornerRadius="15" BorderBrush="#FF0E1646" Background="#FF0E1646">
-                    <mD:PackIcon Kind="ArrowBack" Foreground="White"
-                                     Width="25" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                    </Button.Effect>
-                </Button>
-                
-                
-                <Border Grid.Column="1" CornerRadius="15" Height="40" Width="60">
-                    <Border.Background>
-                        <SolidColorBrush Color="#FFBBBBBB"/>
-                    </Border.Background>
-                    <TextBlock Text="{Binding Quantity,FallbackValue=1}" TextAlignment="Center"  
-                               Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"/>
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                    </Border.Effect>
-                </Border>
-                
-                
-                <Button Grid.Column="2" Command="{Binding UpQuantityCommand}" mD:ButtonAssist.CornerRadius="15" BorderBrush="#FF0E1646" Background="#FF0E1646">
-                    <mD:PackIcon Kind="ArrowForward" Foreground="White"
-                                     Width="25" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                    </Button.Effect>
-                </Button>
-                
-            </Grid>
-
-            <Button Grid.Column="2" mD:ButtonAssist.CornerRadius="15"
-                Margin="20" Width="300" Height="50" Content="Buy Product" FontSize="26"
-                HorizontalAlignment="Center" Background="#FF05AF00" Foreground="White"
-                Command="{Binding BuyProductCommand}" BorderBrush="#FF05AF00">
-                <Button.Effect>
-                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-                </Button.Effect>
-            </Button>
-            
-            <Button Grid.Column="0" Height="50" Width="100" 
+            <Button Grid.Column="0" Height="50" Width="90" 
                                 mD:ButtonAssist.CornerRadius="15" Background="#FF4E93FF"
                                 Command="{Binding BackToShopCommand}"  
                                 HorizontalAlignment="Center" BorderBrush="#FF4E93FF">
@@ -155,6 +105,70 @@
                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
                 </Button.Effect>
             </Button>
+
+            <Grid Grid.Column="1" Margin="20 10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.7*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button Grid.Column="0" Command="{Binding DownQuantityCommand}" 
+                        IsEnabled="{Binding IsEnabledToQuantityDown}" Width="50"
+                        mD:ButtonAssist.CornerRadius="15" BorderBrush="#FF0E1646" Background="#FF0E1646">
+                    <mD:PackIcon Kind="ArrowBack" Foreground="White"
+                                     Width="25" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                    </Button.Effect>
+                </Button>
+
+
+                <Border Grid.Column="1" CornerRadius="15" Height="40" Width="60">
+                    <Border.Background>
+                        <SolidColorBrush Color="#FFBBBBBB"/>
+                    </Border.Background>
+                    <TextBlock Text="{Binding Quantity,FallbackValue=1}" TextAlignment="Center"  
+                               Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"/>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                    </Border.Effect>
+                </Border>
+
+
+                <Button Grid.Column="2" Command="{Binding UpQuantityCommand}" mD:ButtonAssist.CornerRadius="15" BorderBrush="#FF0E1646" Background="#FF0E1646">
+                    <mD:PackIcon Kind="ArrowForward" Foreground="White"
+                                     Width="25" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                    </Button.Effect>
+                </Button>
+
+            </Grid>
+
+            <Button Grid.Column="2" Height="75" Width="80" 
+                                mD:ButtonAssist.CornerRadius="45" Background="#FFFBA02B"
+                                Command="{Binding AddToBasketCommand}"  
+                                HorizontalAlignment="Center" BorderBrush="#FFFBA02B">
+                <mD:PackIcon Kind="ShoppingBasketPlus"
+                                     Foreground="White"
+                                     Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+
+            <Button Grid.Column="3" mD:ButtonAssist.CornerRadius="15"
+                Margin="20" Width="300" Height="50" Content="Buy Product" FontSize="26"
+                HorizontalAlignment="Center" Background="#FF05AF00" Foreground="White"
+                Command="{Binding BuyProductCommand}" BorderBrush="#FF05AF00">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+
         </Grid>
     </StackPanel>
 </UserControl>

@@ -3,55 +3,82 @@ using DbEcommerceApp.Data.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using MaterialDesignThemes.Wpf;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using UserEcommerceApp.Message;
 using UserEcommerceApp.Services.Interfaces;
 
 namespace UserEcommerceApp.ViewModel;
+
 public class OrdersViewModel:ViewModelBase
 {
-    public User? user { get; set; } = new();
-    public ObservableCollection<Category> Categories { get; set; } = new();
-    public ObservableCollection<Product> Products { get; set; } = new();
+    public User? User { get; set; } = new();  
     public ObservableCollection<Order> Orders { get; set; } = new();
-    public Category SelectedCategory { get; set; } = new();
+    public bool IsEnabledToCancel { get; set; }
 
     private readonly INavigationService? _navigationService;
 
     private readonly IMessenger? _messenger;
 
     public OrdersViewModel(INavigationService navigationService, IMessenger messenger)
-    {
-        using (var context = new EcommerceDbContext())
-        {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
-            Categories = new ObservableCollection<Category>(categoriesFromDb);
-            foreach (var category in Categories) Products = new ObservableCollection<Product>(category.Products!.ToList());
-        }
+    { 
         _navigationService = navigationService;
         _messenger = messenger;
         _messenger.Register<ParameterMessage>(this, param =>
         {
-            user = param?.Message as User;
+            User = param?.Message as User; 
+            if (User != null)
+            {
+                using (var context = new EcommerceDbContext())
+                {
+                    var ordersFromDb = context.Set<Order>().Where(o => o.User!.Login == User!.Login).ToList();
+
+                    Orders = new ObservableCollection<Order>(ordersFromDb);
+                }
+            }
         });
+
     }
 
-    public RelayCommand BackCommand => new(() =>
-    { 
-        _navigationService?.NavigateTo<HomeViewModel>(new ParameterMessage { Message = user });
-    });
-
-    public RelayCommand CardCommand => new(() =>
+    #region SelectedOrder FullProp
+    private Order _selectedOrder;
+    public Order SelectedOrder
     {
-        user = null;
-        _navigationService?.NavigateTo<CardViewModel>(new ParameterMessage { Message = user });
+        get => _selectedOrder;
+        set
+        {  
+            _selectedOrder = new(); 
+            _selectedOrder = value;
+            IsEnabledToCancel = true;
+        }
+    }
+    #endregion
+
+     
+
+
+    public RelayCommand DeleteOrderCommand => new(() =>
+    {
+        using (var context = new EcommerceDbContext())
+        {
+            context.Orders.Remove(_selectedOrder!);
+            context.SaveChanges();
+            MessageBox.Show("Your order has been deleted successfully!"); 
+        }
+    }); 
+    
+
+    public RelayCommand SearchOrderCommand => new(() =>
+    {
+        MessageBox.Show("Searched");
     }); 
 
-    public RelayCommand MyOrdersCommand => new(() =>
-    { 
-        _navigationService?.NavigateTo<OrdersViewModel>(new ParameterMessage { Message = user });
-    }); 
 
+    public RelayCommand BackToHomeCommand => new(() =>
+    {
+        _navigationService?.NavigateTo<HomeViewModel>(new ParameterMessage { Message = User });
+    });
 }
