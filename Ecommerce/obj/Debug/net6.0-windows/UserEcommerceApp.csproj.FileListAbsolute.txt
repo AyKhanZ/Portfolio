@@ -583,3 +583,5 @@ C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\UserE
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\ref\UserEcommerceApp.dll
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\View\CardsView.g.cs
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\View\CardsView.baml
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\View\BasketView.g.cs
+C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\View\BasketView.baml

@@ -33,6 +33,7 @@ public partial class App : Application
         Container.RegisterSingleton<CardViewModel>();
         Container.RegisterSingleton<CardsViewModel>();
         Container.RegisterSingleton<OrdersViewModel>();
+        Container.RegisterSingleton<BasketViewModel>();
 
         Container.Verify();
     }

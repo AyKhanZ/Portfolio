@@ -5,7 +5,6 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Win32;
 using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -47,13 +46,13 @@ public class RegistrationViewModel : ViewModelBase
                 context.SaveChanges();
             }
             _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage() { Message = user });
-            user = new(); 
+            user = new();
             image = new(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/defUser.png"));
             return;
         }
         else MessageBox.Show(a);
     });
-    
+
 
     public RelayCommand ImageDownoload => new(() =>
     {

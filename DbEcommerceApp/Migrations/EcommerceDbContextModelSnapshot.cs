@@ -22,6 +22,39 @@ namespace DbEcommerceApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DbEcommerceApp.Data.Models.Basket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Baskets");
+                });
+
+            modelBuilder.Entity("DbEcommerceApp.Data.Models.BasketProduct", b =>
+                {
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BasketId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BasketProducts");
+                });
+
             modelBuilder.Entity("DbEcommerceApp.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -266,6 +299,36 @@ namespace DbEcommerceApp.Migrations
                     b.ToTable("UserPayments");
                 });
 
+            modelBuilder.Entity("DbEcommerceApp.Data.Models.Basket", b =>
+                {
+                    b.HasOne("DbEcommerceApp.Data.Models.User", "User")
+                        .WithMany("Baskets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DbEcommerceApp.Data.Models.BasketProduct", b =>
+                {
+                    b.HasOne("DbEcommerceApp.Data.Models.Basket", "Basket")
+                        .WithMany("BasketProducts")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DbEcommerceApp.Data.Models.Product", "Product")
+                        .WithMany("BasketProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("DbEcommerceApp.Data.Models.Order", b =>
                 {
                     b.HasOne("DbEcommerceApp.Data.Models.User", "User")
@@ -329,6 +392,11 @@ namespace DbEcommerceApp.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DbEcommerceApp.Data.Models.Basket", b =>
+                {
+                    b.Navigation("BasketProducts");
+                });
+
             modelBuilder.Entity("DbEcommerceApp.Data.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -341,14 +409,19 @@ namespace DbEcommerceApp.Migrations
 
             modelBuilder.Entity("DbEcommerceApp.Data.Models.Product", b =>
                 {
+                    b.Navigation("BasketProducts");
+
                     b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("DbEcommerceApp.Data.Models.User", b =>
                 {
+                    b.Navigation("Baskets");
+
                     b.Navigation("Orders");
 
-                    b.Navigation("UserDetail");
+                    b.Navigation("UserDetail")
+                        .IsRequired();
 
                     b.Navigation("UserPayments");
                 });

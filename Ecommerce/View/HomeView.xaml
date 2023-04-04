@@ -102,7 +102,7 @@
 
 
                                 <Button Grid.Row="2" mD:ButtonAssist.CornerRadius="15" Height="35" Width="130"
-                                        Command="{Binding ExitCommand}" BorderBrush="#FF2C6AFF" >
+                                        Command="{Binding GoToBasketCommand}" BorderBrush="#FF2C6AFF" >
                                     <mD:PackIcon Kind = "Basket" Height="30" Width="35" Foreground="White"/>
                                     <Button.Background>
                                         <SolidColorBrush Color="#FF2C6AFF"/>

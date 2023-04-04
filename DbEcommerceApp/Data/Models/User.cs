@@ -13,10 +13,13 @@ public class User :ISendable
     public string Icon { get; set; } = null!;
     public bool IsAdmin { get; set; }
      
+     
+    public int UserDetailId { get; set; }
+    public UserDetail UserDetail { get; set; } = null!;
 
-    public int UserDetailId { get; set; } 
-    public UserDetail? UserDetail { get; set; }
+    //
+    public ICollection<Basket>? Baskets { get; set; }
 
-    public ICollection<Order>? Orders { get; set; }
+    public ICollection<Order>? Orders { get; set; } 
     public ICollection<UserPayment>? UserPayments { get; set; }
 }

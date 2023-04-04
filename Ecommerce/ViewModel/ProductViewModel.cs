@@ -61,16 +61,16 @@ public class ProductViewModel : ViewModelBase
     {
         using (var context = new EcommerceDbContext())
         {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
+            Basket basket = new() {UserId = User!.Id };
+            context.Baskets.Add(basket);
+            context.SaveChanges(); 
 
-            context.Products.Remove(Product!);
-            context.SaveChanges();
-             
-            Product!.IsInBasket = true;
-            context.Products.Add(Product);
-            context.SaveChanges();
+            BasketProduct basketProduct = new() { BasketId = basket.Id, ProductId = Product!.Id };
+            context.BasketProducts.Add(basketProduct);
 
-            MessageBox.Show("Product has been added to basket successfully!👍");
+            context.SaveChanges(); 
+
+            MessageBox.Show("Product has been added to basket successfully!😎👍");
         }
     });
 

@@ -74,6 +74,11 @@ public class HomeViewModel : ViewModelBase
         _navigationService?.NavigateTo<CardsViewModel>(new ParameterMessage { Message = User });
     });
 
+    public RelayCommand GoToBasketCommand => new(() =>
+    {
+        _navigationService?.NavigateTo<BasketViewModel>(new ParameterMessage { Message = User });
+    });
+
     public RelayCommand MyOrdersCommand => new(() =>
     {
         _navigationService?.NavigateTo<OrdersViewModel>(new ParameterMessage { Message = User });

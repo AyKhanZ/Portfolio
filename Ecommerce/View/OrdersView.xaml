@@ -72,9 +72,9 @@
                                                         Padding="3 0 3 0"
                                                         CornerRadius="10"
                                                         BorderThickness="1.6" BorderBrush="Gray">
-                                                            <Border.Background>
+                                                            <!--<Border.Background>
                                                                 <ImageBrush Stretch="Fill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
-                                                            </Border.Background>
+                                                            </Border.Background>-->
                                                         </Border>
                                                     </DockPanel>
                                                     <StackPanel VerticalAlignment="Center" Margin="0 9">
