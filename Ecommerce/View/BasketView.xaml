@@ -16,47 +16,39 @@
              Background="Transparent"
              FontFamily="{DynamicResource MaterialDesignFont}"
              Height="650" Width="920" 
-             d:DataContext="{d:DesignInstance vm:BasketViewModel}"
+             d:DataContext="{d:DesignInstance vm:OrdersViewModel}"
              Name="MyBasketView">
 
     <Border CornerRadius="10" > 
-        <Grid>
-            
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5"/>
+        <Grid> 
+            <Grid.RowDefinitions> 
                 <RowDefinition Height="0.07*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+             
             
-            
-            <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                  Text="MY ORDERS" Foreground="White" FontSize="14" Margin="10,0,0,0" />
-
-            
-            
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="0.7*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0"  Width="600" Height="450" CornerRadius="10" VerticalAlignment="Center"
+                <Border Grid.Row="0"  Width="750" Height="450" CornerRadius="10" VerticalAlignment="Center"
                         Background="#FF0E1646" HorizontalAlignment="Center">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
                     </Border.Effect>
 
-                    <Grid Height="400"  Width="550" HorizontalAlignment="Center">
+                    <Grid Height="400"  Width="650" HorizontalAlignment="Center">
 
                         <Border Margin="25" Grid.Row="0" Background="#FF4E93FF" CornerRadius="25">
 
                             <ScrollViewer  Margin="25" >
                                 <ListView x:Name="ListViewProducts" 
-                                  ItemsSource="{Binding Baskets}" 
-                                  SelectedItem="{Binding SelectedBasket}"
+                                  ItemsSource="{Binding  BasketProducts}" 
+                                  SelectedItem="{Binding SelectedBasketProduct}"
                                   ScrollViewer.CanContentScroll="True" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   Background="Transparent" >
@@ -64,23 +56,23 @@
                                         <DataTemplate>
                                             <Border HorizontalAlignment="Center" CornerRadius="10"
                                         BorderThickness="1" BorderBrush="White"
-                                        Width="300" Height="350"
+                                        Width="450" Height="350"
                                         Padding="5" Background="#22202f">
                                                 <StackPanel Orientation="Vertical">
                                                     <DockPanel Height="210">
-                                                        <Border Height="200"
+                                                        <Border Height="200" Width="300"
                                                         Padding="3 0 3 0"
                                                         CornerRadius="10"
                                                         BorderThickness="1.6" BorderBrush="Gray">
-                                                            <!--<Border.Background>
-                                                                <ImageBrush Stretch="Fill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
-                                                            </Border.Background>-->
+                                                            <Border.Background>
+                                                                <ImageBrush Stretch="Fill" ImageSource="{Binding Product.Image, UpdateSourceTrigger=PropertyChanged}"/>
+                                                            </Border.Background>
                                                         </Border>
                                                     </DockPanel>
                                                     <StackPanel VerticalAlignment="Center" Margin="0 9">
-                                                        <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="White" Text="{Binding Bas, UpdateSourceTrigger=PropertyChanged}" />
-                                                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-                                                        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="3 0 0 0" TextAlignment="Left" Width="90" Foreground="White" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0\}$}" />
+                                                        <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="White" Text="{Binding Product.Name, UpdateSourceTrigger=PropertyChanged}" />
+                                                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="{Binding Product.Description, UpdateSourceTrigger=PropertyChanged}" />
+                                                        <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="20 0 0 0" TextAlignment="Left" Width="90" Foreground="White" Text="{Binding Product.Price, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0\}$}" />
                                                     </StackPanel>
                                                 </StackPanel>
                                             </Border>
@@ -119,7 +111,7 @@
 
 
                     <Button Grid.Column="1" IsEnabled="{Binding IsEnabledToCancel}" mD:ButtonAssist.CornerRadius="15" Height="50" Width="150"
-                                            Command="{Binding DeleteOrderCommand}" BorderBrush="Red" >
+                                            Command="{Binding DeleteProductCommand}" BorderBrush="Red" >
                         <mD:PackIcon Kind = "Cancel" Height="40" Width="40" Foreground="White"/>
                         
                         <Button.Background>
@@ -144,7 +136,7 @@
                                             mD:HintAssist.Hint="Search order"/>
 
                             <Button Grid.Column="1" Width="50" Height="50"  mD:ButtonAssist.CornerRadius="15"
-                                                Command="{Binding SearchOrderCommand}" Padding="2,2,2,2" BorderBrush="#FF2C6AFF">
+                                                Command="{Binding SearchProductCommand}" Padding="2,2,2,2" BorderBrush="#FF2C6AFF">
                                 <Button.Background>
                                     <SolidColorBrush Color="#FF2C6AFF"/>
                                 </Button.Background>

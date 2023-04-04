@@ -22,9 +22,6 @@
     <Compile Update="View\MainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\OrdersView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\ProductView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -33,6 +30,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\OrdersView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SelectedCardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CardsView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -49,9 +52,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\BasketView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\OrdersView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductView.xaml">

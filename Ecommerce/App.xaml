@@ -38,6 +38,10 @@
                 <view:CardsView></view:CardsView>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:SelectedCardViewModel}">
+                <view:SelectedCardView></view:SelectedCardView>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type viewModel:OrdersViewModel}">
                 <view:OrdersView></view:OrdersView>
             </DataTemplate>

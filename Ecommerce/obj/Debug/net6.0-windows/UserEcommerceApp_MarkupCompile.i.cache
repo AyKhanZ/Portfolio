@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\App.xaml
-9-1777805465
+10-1748355451
 2-542557727
-29-649023339
+311310328937
 2361774817598
-View\BasketView.xaml;View\CardsView.xaml;View\CardView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainView.xaml;View\OrdersView.xaml;View\ProductView.xaml;View\RegistrationView.xaml;
+View\BasketView.xaml;View\CardsView.xaml;View\CardView.xaml;View\HomeView.xaml;View\LoginView.xaml;View\MainView.xaml;View\OrdersView.xaml;View\ProductView.xaml;View\RegistrationView.xaml;View\SelectedCardView.xaml;
 
-True
+False
 

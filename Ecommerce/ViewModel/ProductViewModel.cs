@@ -3,10 +3,7 @@ using DbEcommerceApp.Data.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using UserEcommerceApp.Message;
@@ -17,7 +14,7 @@ namespace UserEcommerceApp.ViewModel;
 public class ProductViewModel : ViewModelBase
 {
     public int Quantity { get; set; } = 1;
-    public bool IsEnabledToQuantityDown { get; set; } 
+    public bool IsEnabledToQuantityDown { get; set; }
     public User? User { get; set; } = new();
     public Product? Product { get; set; } = new();
     public BitmapImage? image { get; set; } = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/no_product.jpg"));
@@ -45,30 +42,38 @@ public class ProductViewModel : ViewModelBase
 
     public RelayCommand BuyProductCommand => new(() =>
     {
-        Order? Order = new() { UserId = User!.Id, Quantity = Quantity, Date = DateTime.Now, TotalPrice = Product!.Price * Quantity };
-        User?.Orders?.Add(Order);
-        ///////////////////
-        ///////////////////
-        ///////////////////
-        ///////////////////
-        ///////////////////
-        MessageBox.Show("The purchase was successful");
-        _navigationService?.NavigateTo<HomeViewModel>(new ParameterMessage { Message = User });
+        using (var context = new EcommerceDbContext())
+        {
+            Order? Order = new() { UserId = User!.Id, Quantity = Quantity, Date = DateTime.Now, TotalPrice = Product!.Price * Quantity };
+            User?.Orders?.Add(Order);
+
+            context.Orders.Add(Order);
+            context.SaveChanges();
+
+            OrderProduct orderProduct = new() { OrderId =Order.Id, ProductId = Product!.Id };
+            context.OrderProducts.Add(orderProduct);
+            context.SaveChanges();
+        }
+
+        UserProductParameter userProductParameter = new(User!, Product);
+        _navigationService?.NavigateTo<SelectedCardViewModel>(new ParameterMessage { Message = userProductParameter });
+         
     });
 
 
+    // Add product to basket
     public RelayCommand AddToBasketCommand => new(() =>
     {
         using (var context = new EcommerceDbContext())
         {
-            Basket basket = new() {UserId = User!.Id };
+            Basket basket = new() { UserId = User!.Id };
             context.Baskets.Add(basket);
-            context.SaveChanges(); 
+            context.SaveChanges();
 
             BasketProduct basketProduct = new() { BasketId = basket.Id, ProductId = Product!.Id };
             context.BasketProducts.Add(basketProduct);
 
-            context.SaveChanges(); 
+            context.SaveChanges();
 
             MessageBox.Show("Product has been added to basket successfully!😎👍");
         }

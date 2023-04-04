@@ -46,14 +46,28 @@
 
 
   <ItemGroup>
+    <Compile Update="View\OrdersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\BasketView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\SelectedCardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
 
   <ItemGroup>
+    <Page Update="View\OrdersView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\BasketView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SelectedCardView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

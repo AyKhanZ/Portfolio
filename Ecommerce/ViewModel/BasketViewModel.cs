@@ -3,8 +3,6 @@ using DbEcommerceApp.Data.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using MaterialDesignThemes.Wpf;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -13,10 +11,10 @@ using UserEcommerceApp.Services.Interfaces;
 
 namespace UserEcommerceApp.ViewModel;
 
-public class BasketViewModel: ViewModelBase
+public class BasketViewModel : ViewModelBase
 {
-    public User? User { get; set; } = new();  
-    public ObservableCollection<Basket> Baskets { get; set; } = new();
+    public User? User { get; set; } = new();
+    public ObservableCollection<BasketProduct> BasketProducts { get; set; } = new(); 
     public bool IsEnabledToCancel { get; set; }
 
     private readonly INavigationService? _navigationService;
@@ -24,23 +22,25 @@ public class BasketViewModel: ViewModelBase
     private readonly IMessenger? _messenger;
 
     public BasketViewModel(INavigationService navigationService, IMessenger messenger)
-    { 
+    {
         _navigationService = navigationService;
         _messenger = messenger;
         _messenger.Register<ParameterMessage>(this, param =>
         {
-            User = param?.Message as User; 
+            IsEnabledToCancel = false;
+            User = param?.Message as User;
             if (User != null)
             {
                 using (var context = new EcommerceDbContext())
-                {
-                    //var ordersFromDb = context.Set<Order>().Where(o => o.User!.Login == User!.Login).ToList();
+                { 
+                    var basketProductsFromDb = context.Set<BasketProduct>().Where(o => o.Basket.UserId == User.Id).ToList();
+                    BasketProducts = new ObservableCollection<BasketProduct>(basketProductsFromDb)!;
 
-                    //Orders = new ObservableCollection<Order>(ordersFromDb);
-                    
-                    var basketProductsFromDb= context.Set<Basket>().Where(o => o.User!.Login == User!.Login).ToList();
+                    foreach (var basketProduct in BasketProducts)
+                    {
+                        basketProduct.Product = context.Products.SingleOrDefault(p => p.Id == basketProduct.ProductId)!;
+                    } 
 
-                    Baskets = new ObservableCollection<Basket>(basketProductsFromDb)!;
                 }
             }
         });
@@ -48,41 +48,43 @@ public class BasketViewModel: ViewModelBase
     }
 
     #region SelectedOrder FullProp
-    private Basket _selectedBasket ;
-    public Basket SelectedBasket 
+    private BasketProduct _selectedBasketProduct;
+    public BasketProduct SelectedBasketProduct
     {
-        get => _selectedBasket;
+        get => _selectedBasketProduct;
         set
-        {  
-            _selectedBasket = new(); 
-            _selectedBasket = value;
+        {
+            _selectedBasketProduct= new();
+            _selectedBasketProduct= value;
             IsEnabledToCancel = true;
         }
     }
     #endregion
 
-     
 
 
-    public RelayCommand DeleteOrderCommand => new(() =>
+
+    public RelayCommand DeleteProductCommand => new(() =>
     {
         using (var context = new EcommerceDbContext())
-        {
-            context.Baskets.Remove(_selectedBasket!);
+        { 
+            context.BasketProducts.Remove(_selectedBasketProduct!);
             context.SaveChanges();
-            MessageBox.Show("Your order has been deleted successfully!"); 
+            IsEnabledToCancel = false;
+            MessageBox.Show("Product has been deleted from basket successfully!");
         }
-    }); 
-    
+    });
 
-    public RelayCommand SearchOrderCommand => new(() =>
+
+    public RelayCommand SearchProductCommand => new(() =>
     {
         MessageBox.Show("Searched");
-    }); 
+    });
 
 
     public RelayCommand BackToHomeCommand => new(() =>
     {
+        IsEnabledToCancel = false;
         _navigationService?.NavigateTo<HomeViewModel>(new ParameterMessage { Message = User });
     });
 }
