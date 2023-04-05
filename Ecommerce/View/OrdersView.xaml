@@ -46,7 +46,7 @@
 
                             <ScrollViewer  Margin="25" >
                                 <ListView x:Name="ListViewProducts" 
-                                  ItemsSource="{Binding OrderProducts}" 
+                                  ItemsSource="{Binding SearchResults}" 
                                   SelectedItem="{Binding SelectedOrderProduct}"
                                   ScrollViewer.CanContentScroll="True" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
@@ -127,15 +127,15 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="0.2*"/>
-                            </Grid.ColumnDefinitions>
-
+                            </Grid.ColumnDefinitions> 
+  
                             <TextBox Grid.Column="0" Height="40"
-                                            Margin="20 0 10 0" FontSize="22"
+                                            Margin="20 0 10 0" FontSize="22" Text="{Binding SearchText}"
                                             Background="#FF4E93FF" Foreground="Black" BorderBrush="Black" 
-                                            mD:HintAssist.Hint="Search order"/>
+                                            mD:HintAssist.Hint="Search product by name"/>
 
                             <Button Grid.Column="1" Width="50" Height="50"  mD:ButtonAssist.CornerRadius="15"
-                                                Command="{Binding SearchProductCommand}" Padding="2,2,2,2" BorderBrush="#FF2C6AFF">
+                                                Command="{Binding SearchOrderCommand}" Padding="2,2,2,2" BorderBrush="#FF2C6AFF">
                                 <Button.Background>
                                     <SolidColorBrush Color="#FF2C6AFF"/>
                                 </Button.Background>

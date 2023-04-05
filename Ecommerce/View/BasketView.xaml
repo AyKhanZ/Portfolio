@@ -16,7 +16,7 @@
              Background="Transparent"
              FontFamily="{DynamicResource MaterialDesignFont}"
              Height="650" Width="920" 
-             d:DataContext="{d:DesignInstance vm:OrdersViewModel}"
+             d:DataContext="{d:DesignInstance vm:BasketViewModel}"
              Name="MyBasketView">
 
     <Border CornerRadius="10" > 
@@ -46,18 +46,18 @@
                         <Border Margin="25" Grid.Row="0" Background="#FF4E93FF" CornerRadius="25">
 
                             <ScrollViewer  Margin="25" >
-                                <ListView x:Name="ListViewProducts" 
-                                  ItemsSource="{Binding  BasketProducts}" 
-                                  SelectedItem="{Binding SelectedBasketProduct}"
-                                  ScrollViewer.CanContentScroll="True" 
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  Background="Transparent" >
+                                <ListView
+                                        ItemsSource="{Binding SearchResults}" 
+                                        SelectedItem="{Binding SelectedBasketProduct}"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                        Background="Transparent" >
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border HorizontalAlignment="Center" CornerRadius="10"
-                                        BorderThickness="1" BorderBrush="White"
-                                        Width="450" Height="350"
-                                        Padding="5" Background="#22202f">
+                                                    BorderThickness="1" BorderBrush="White"
+                                                    Width="450" Height="350"
+                                                    Padding="5" Background="#22202f">
                                                 <StackPanel Orientation="Vertical">
                                                     <DockPanel Height="210">
                                                         <Border Height="200" Width="300"
@@ -131,9 +131,9 @@
                             </Grid.ColumnDefinitions>
                             
                             <TextBox Grid.Column="0" Height="40"
-                                            Margin="20 0 10 0" FontSize="22"
+                                            Margin="20 0 10 0" FontSize="22" Text="{Binding SearchText}"
                                             Background="#FF4E93FF" Foreground="Black" BorderBrush="Black" 
-                                            mD:HintAssist.Hint="Search order"/>
+                                            mD:HintAssist.Hint="Search product by name"/>
 
                             <Button Grid.Column="1" Width="50" Height="50"  mD:ButtonAssist.CornerRadius="15"
                                                 Command="{Binding SearchProductCommand}" Padding="2,2,2,2" BorderBrush="#FF2C6AFF">

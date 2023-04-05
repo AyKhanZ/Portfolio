@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using UserEcommerceApp.Message;
+using UserEcommerceApp.Services.Classes;
 using UserEcommerceApp.Services.Interfaces;
 
 namespace UserEcommerceApp.ViewModel;
@@ -15,7 +16,10 @@ public class OrdersViewModel : ViewModelBase
 {
     public User? User { get; set; } = new();
     public ObservableCollection<OrderProduct> OrderProducts { get; set; } = new();
+    public ObservableCollection<OrderProduct> SearchResults { get; set; } = new();
+    public string? SearchText { get; set; }
     public bool IsEnabledToCancel { get; set; }
+
 
     private readonly INavigationService? _navigationService;
 
@@ -43,13 +47,15 @@ public class OrdersViewModel : ViewModelBase
 
                 }
             }
+            SearchResults = new(OrderProducts);
         });
 
     }
 
+
     #region SelectedOrderProduct FullProp
-    private Order _selectedOrderProduct;
-    public Order SelectedOrderProduct
+    private OrderProduct _selectedOrderProduct;
+    public OrderProduct SelectedOrderProduct
     {
         get => _selectedOrderProduct;
         set
@@ -60,17 +66,18 @@ public class OrdersViewModel : ViewModelBase
         }
     }
     #endregion
-
-
-
+     
 
     public RelayCommand DeleteProductCommand => new(() =>
     {
         using (var context = new EcommerceDbContext())
-        {
-            //context.BasketProducts.Remove(_selectedBasketProduct!);
-            context.Orders.Remove(_selectedOrderProduct!);
+        { 
+            context.OrderProducts.Remove(_selectedOrderProduct!);
             context.SaveChanges();
+             
+            OrderProducts.Remove(_selectedOrderProduct!);
+            SearchResults = new(OrderProducts);
+
             IsEnabledToCancel = false;
             MessageBox.Show("Order has been deleted successfully!");
         }
@@ -79,7 +86,7 @@ public class OrdersViewModel : ViewModelBase
 
     public RelayCommand SearchOrderCommand => new(() =>
     {
-        MessageBox.Show("Searched");
+        SearchResults = SearchServices.SearchInOrders(SearchText!, SearchResults, OrderProducts);
     });
 
 
