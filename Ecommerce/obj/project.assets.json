@@ -1387,27 +1387,18 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "EcommerceLibrary": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
           "Microsoft.Extensions.Configuration": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0"
+          "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "MvvmLightLibsStd10": "5.4.1.1",
+          "SimpleInjector": "5.4.1"
         },
         "compile": {
           "bin/placeholder/DbEcommerceApp.dll": {}
         },
         "runtime": {
           "bin/placeholder/DbEcommerceApp.dll": {}
-        }
-      },
-      "EcommerceLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/EcommerceLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EcommerceLibrary.dll": {}
         }
       }
     }
@@ -4164,17 +4155,11 @@
       "type": "project",
       "path": "../DbEcommerceApp/DbEcommerceApp.csproj",
       "msbuildProject": "../DbEcommerceApp/DbEcommerceApp.csproj"
-    },
-    "EcommerceLibrary/1.0.0": {
-      "type": "project",
-      "path": "../EcommerceLibrary/EcommerceLibrary.csproj",
-      "msbuildProject": "../EcommerceLibrary/EcommerceLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "DbEcommerceApp >= 1.0.0",
-      "EcommerceLibrary >= 1.0.0",
       "MaterialDesignColors >= 2.1.2",
       "MaterialDesignThemes >= 4.8.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
@@ -4218,9 +4203,6 @@
           "projectReferences": {
             "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\DbEcommerceApp\\DbEcommerceApp.csproj": {
               "projectPath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\DbEcommerceApp\\DbEcommerceApp.csproj"
-            },
-            "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj": {
-              "projectPath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj"
             }
           }
         }

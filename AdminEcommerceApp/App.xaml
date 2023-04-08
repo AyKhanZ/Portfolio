@@ -1,0 +1,45 @@
+﻿<Application x:Class="AdminEcommerceApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AdminEcommerceApp"
+              
+             xmlns:viewModel="clr-namespace:AdminEcommerceApp.ViewModel"
+             xmlns:view="clr-namespace:AdminEcommerceApp.View" 
+              
+             StartupUri="../View/MainView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate DataType="{x:Type viewModel:MainViewModel}">
+                <view:MainView></view:MainView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AllProductsViewModel}">
+                <view:AllProductsView></view:AllProductsView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView></view:LoginView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ProductViewModel}">
+                <view:ProductView></view:ProductView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AddProductViewModel}">
+                <view:AddProductView></view:AddProductView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AddCategoryViewModel}">
+                <view:AddCategoryView></view:AddCategoryView>
+            </DataTemplate>
+ 
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

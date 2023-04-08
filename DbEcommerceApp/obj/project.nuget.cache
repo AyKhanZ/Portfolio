@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "svRu4Tmvw7GGFohP1CHCmybf4RwdYfVTyxz7tR0TFaTeIc80M6+QXGEPATEMmHCDjedwjRrldzflqgclCZPmrw==",
+  "dgSpecHash": "W4FIUuSPh8U1f3orDhDnI7loqNbuuHu2Ua79QQ3QIlianr8tCsTwhaxGUGaXo0lhi9fYWiPMPOxQEMWt3NExRg==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\DbEcommerceApp\\DbEcommerceApp.csproj",
   "expectedPackageFiles": [
@@ -48,8 +48,11 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\mvvmlightlibsstd10\\5.4.1.1\\mvvmlightlibsstd10.5.4.1.1.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\simpleinjector\\5.4.1\\simpleinjector.5.4.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\system.componentmodel\\4.0.1\\system.componentmodel.4.0.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",

@@ -22,7 +22,7 @@
         <ControlTemplate TargetType="Window">
             <Border CornerRadius="10">
                 <Border.Background>
-                    <SolidColorBrush Color="#FF0A1034"/>
+                    <SolidColorBrush Color="#1b1b1b"/>
                 </Border.Background>
                 
                 <Grid>

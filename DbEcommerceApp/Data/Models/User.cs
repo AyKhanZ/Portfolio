@@ -1,6 +1,4 @@
-﻿using EcommerceLibrary;
-
-namespace DbEcommerceApp.Data.Models;
+﻿namespace DbEcommerceApp.Data.Models;
 
 public class User :ISendable
 {
@@ -10,7 +8,7 @@ public class User :ISendable
     public string Surname { get; set; } = null!; 
     public string Password { get; set; } = null!; 
     public string Email { get; set; } = null!;
-    public string Icon { get; set; } = null!;
+    public byte[] Icon { get; set; } = null!;
     public bool IsAdmin { get; set; }
      
      

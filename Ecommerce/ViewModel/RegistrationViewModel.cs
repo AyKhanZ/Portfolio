@@ -8,9 +8,11 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using UserEcommerceApp.Message;
+using DbEcommerceApp.Message;
 using UserEcommerceApp.Services.Classes;
 using UserEcommerceApp.Services.Interfaces;
+using System.IO;
+using System.Collections;
 
 namespace UserEcommerceApp.ViewModel;
 
@@ -35,8 +37,7 @@ public class RegistrationViewModel : ViewModelBase
 
     public RelayCommand<PasswordBox> RegistrationCommand => new(param =>
     {
-        user!.Password = param.Password;
-        user!.Icon = (image!.UriSource).ToString();
+        user!.Password = param.Password; 
         var a = CheckRegistration.CheckUser(user, param.Password);
         if (a == null)
         {
@@ -46,9 +47,6 @@ public class RegistrationViewModel : ViewModelBase
                 context.SaveChanges();
             }
             _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage() { Message = user });
-            user = new();
-            image = new(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/defUser.png"));
-            return;
         }
         else MessageBox.Show(a);
     });
@@ -61,12 +59,20 @@ public class RegistrationViewModel : ViewModelBase
         openImage.Filter = "Image files(*.PNG, *.JPG, *.BMP)|*.png;*.jpg;*.bmp";
         if (openImage.ShowDialog() == true)
         {
-            var uri = new Uri(openImage.FileName);
-            image = new(uri);
-
-            user!.Icon = uri.ToString();
+            string filePath = openImage.FileName;
+            byte[] imageBytes = File.ReadAllBytes(filePath);
+            user!.Icon = imageBytes;
+             
+            using (MemoryStream stream = new MemoryStream(imageBytes))
+            {
+                BitmapImage _image = new();
+                _image.BeginInit();
+                _image.CacheOption = BitmapCacheOption.OnLoad;
+                _image.StreamSource = stream;
+                _image.EndInit();
+                image = _image;
+            }
         }
-        user!.Icon = image!.UriSource.ToString();
     });
 
     public RelayCommand BackToLoginCommand => new(() =>

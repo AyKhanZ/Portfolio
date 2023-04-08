@@ -6,8 +6,8 @@ using GalaSoft.MvvmLight.Messaging;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using UserEcommerceApp.Message;
-using UserEcommerceApp.Services.Interfaces;
+using DbEcommerceApp.Message;
+using UserEcommerceApp.Services.Interfaces; 
 
 namespace UserEcommerceApp.ViewModel;
 
@@ -43,13 +43,9 @@ public class LoginViewModel : ViewModelBase
                 if (FoundUser?.Password == pass.Password)
                 {
                     _navigationService?.NavigateTo<HomeViewModel>(new ParameterMessage { Message = FoundUser });
-                }
-                else if (FoundUser!.IsAdmin && pass.Password == "admin")
-                {
-                    //_navigationService?.NavigateTo<AdminViewModel>(new UsersMessage { SendedUser = FoundUser });
-                }
+                }  
                 else MessageBox.Show("Incorrect password!");
-            }
+            } 
             else MessageBox.Show("You aren\'t a user!");
         }
     });

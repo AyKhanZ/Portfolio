@@ -13,7 +13,7 @@
              TextElement.FontSize="14"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="Transparent"
+             Background="#131313"
              FontFamily="{DynamicResource MaterialDesignFont}"
              Height="650" Width="920" 
              d:DataContext="{d:DesignInstance vm:LoginViewModel}"
@@ -30,8 +30,8 @@
             <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" 
                   Text="LOG IN" Foreground="White" FontSize="14" Margin="10,0,0,0" />
 
-            <Border Grid.Row="2" Width="300" Height="400" CornerRadius="10" VerticalAlignment="Center"
-                    Background="#FF0E1646" HorizontalAlignment="Center">
+            <Border Grid.Row="2" Width="350" Height="450" CornerRadius="10" VerticalAlignment="Center"
+                    Background="#FF484848" HorizontalAlignment="Center">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
                 </Border.Effect>
@@ -54,12 +54,12 @@
                                  CaretBrush="LightGray" BorderBrush="DarkGray"
                                  BorderThickness="0,0,0,1"
                                  mD:HintAssist.Hint="Enter username"
-                                 Height="35" Width="240" 
+                                 Height="35" Width="285" 
                                  DockPanel.Dock="Right"
                                  Text="{Binding user.Login}" 
                                  VerticalAlignment="Center"/>
                         <mD:PackIcon Kind="Contact" 
-                                 DockPanel.Dock="Left" Height="30" Width="30"
+                                 DockPanel.Dock="Left" Height="35" Width="35"
                                  VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
 
                     </DockPanel>
@@ -71,11 +71,11 @@
                         <PasswordBox FontSize="16" MaxLength="15"
                                      Foreground="White" Background="Transparent"
                                      CaretBrush="LightGray" BorderBrush="DarkGray"
-                                     Height="35" Width="240" 
+                                     Height="35" Width="285" 
                                      Name="Pass" mD:HintAssist.Hint="Enter password" 
                                      DockPanel.Dock="Right" VerticalAlignment="Center"/>
                         <mD:PackIcon Kind="Password"
-                                     DockPanel.Dock="Left" Height="30" Width="30"
+                                     DockPanel.Dock="Left" Height="35" Width="35"
                                      VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
                     </DockPanel>
                     <Button Grid.Row="5" 
@@ -84,8 +84,7 @@
                         Background="Transparent" x:Name="registerButton" 
                         BorderBrush="{x:Null}" 
                         Foreground="DarkBlue" 
-                        Command="{Binding RegistrationCommand}"
-                        Style="{DynamicResource MaterialDesignFlatAccentButton}" >
+                        Command="{Binding RegistrationCommand}" >
                     <Button.Content>
                         <TextBlock Foreground="#FF008DEA" Width="65" >
                             <Underline FontSize="12" >Not a user?</Underline>
@@ -96,9 +95,13 @@
                         HorizontalAlignment="Center" VerticalAlignment="Center" 
                         FontSize="26" Width="200" Height="50" 
                         mD:ButtonAssist.CornerRadius="15"
-                        Background="#FF2C6AFF" Foreground="White" BorderBrush="#FF2C6AFF"
+                        Background="#FF673AB7" Foreground="White" BorderBrush="#FF673AB7"
                         Command="{Binding LoginCommand}" 
-                        CommandParameter="{Binding ElementName=Pass}"/>
+                        CommandParameter="{Binding ElementName=Pass}">
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                        </Button.Effect>
+                    </Button>
                 </Grid>
             </Border>
         </Grid>

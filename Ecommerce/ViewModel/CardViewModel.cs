@@ -5,7 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System.Linq;
 using System.Windows;
-using UserEcommerceApp.Message;
+using DbEcommerceApp.Message;
 using UserEcommerceApp.Services.Interfaces;
 
 namespace UserEcommerceApp.ViewModel;

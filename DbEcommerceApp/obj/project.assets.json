@@ -788,6 +788,35 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "MvvmLightLibsStd10/5.4.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/GalaSoft.MvvmLight.dll": {
+            "related": ".pdb;.XML"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.0/GalaSoft.MvvmLight.dll": {
+            "related": ".pdb;.XML"
+          }
+        }
+      },
+      "SimpleInjector/5.4.1": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/SimpleInjector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/SimpleInjector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -806,6 +835,20 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.CodeDom.dll": {}
+        }
+      },
+      "System.ComponentModel/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.1.0"
+        },
+        "compile": {
+          "ref/netstandard1.0/System.ComponentModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
       "System.Configuration.ConfigurationManager/5.0.0": {
@@ -1276,16 +1319,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "EcommerceLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/EcommerceLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EcommerceLibrary.dll": {}
         }
       }
     }
@@ -2425,6 +2458,69 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "MvvmLightLibsStd10/5.4.1.1": {
+      "sha512": "zU9KXgq8dfnzxxOvvAVtasbhaQGoDlTr8Pw2AjZ1NB905GQljrxqkgh3jo5/47Vux5duw3/faUgcZjdfomGvFw==",
+      "type": "package",
+      "path": "mvvmlightlibsstd10/5.4.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid1/GalaSoft.MvvmLight.Platform.XML",
+        "lib/monoandroid1/GalaSoft.MvvmLight.Platform.dll",
+        "lib/monoandroid1/GalaSoft.MvvmLight.Platform.pdb",
+        "lib/monoandroid1/GalaSoft.MvvmLight.XML",
+        "lib/monoandroid1/GalaSoft.MvvmLight.dll",
+        "lib/monoandroid1/GalaSoft.MvvmLight.pdb",
+        "lib/net45/GalaSoft.MvvmLight.Platform.dll",
+        "lib/net45/GalaSoft.MvvmLight.Platform.pdb",
+        "lib/net45/GalaSoft.MvvmLight.Platform.xml",
+        "lib/net45/GalaSoft.MvvmLight.dll",
+        "lib/net45/GalaSoft.MvvmLight.pdb",
+        "lib/net45/GalaSoft.MvvmLight.xml",
+        "lib/net45/System.Windows.Interactivity.dll",
+        "lib/netstandard1.0/GalaSoft.MvvmLight.XML",
+        "lib/netstandard1.0/GalaSoft.MvvmLight.dll",
+        "lib/netstandard1.0/GalaSoft.MvvmLight.pdb",
+        "lib/uap10.0/GalaSoft.MvvmLight.Platform.dll",
+        "lib/uap10.0/GalaSoft.MvvmLight.Platform.pdb",
+        "lib/uap10.0/GalaSoft.MvvmLight.Platform.pri",
+        "lib/uap10.0/GalaSoft.MvvmLight.Platform.xml",
+        "lib/uap10.0/GalaSoft.MvvmLight.dll",
+        "lib/uap10.0/GalaSoft.MvvmLight.pdb",
+        "lib/uap10.0/GalaSoft.MvvmLight.xml",
+        "lib/xamarin.ios10/GalaSoft.MvvmLight.Platform.XML",
+        "lib/xamarin.ios10/GalaSoft.MvvmLight.Platform.dll",
+        "lib/xamarin.ios10/GalaSoft.MvvmLight.XML",
+        "lib/xamarin.ios10/GalaSoft.MvvmLight.dll",
+        "lib/xamarin.ios10/GalaSoft.MvvmLight.pdb",
+        "mvvmlightlibsstd10.5.4.1.1.nupkg.sha512",
+        "mvvmlightlibsstd10.nuspec"
+      ]
+    },
+    "SimpleInjector/5.4.1": {
+      "sha512": "L7s/snITatVAFz3dKM0+YVO0XApEj+ugCstDhq9eQLi1UYnKFyoNW6RtHkYfv5ue/UVrbS3l6ivTKIUO3FcRRg==",
+      "type": "package",
+      "path": "simpleinjector/5.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/SimpleInjector.dll",
+        "lib/net45/SimpleInjector.xml",
+        "lib/net461/SimpleInjector.dll",
+        "lib/net461/SimpleInjector.xml",
+        "lib/netstandard1.0/SimpleInjector.dll",
+        "lib/netstandard1.0/SimpleInjector.xml",
+        "lib/netstandard1.3/SimpleInjector.dll",
+        "lib/netstandard1.3/SimpleInjector.xml",
+        "lib/netstandard2.0/SimpleInjector.dll",
+        "lib/netstandard2.0/SimpleInjector.xml",
+        "lib/netstandard2.1/SimpleInjector.dll",
+        "lib/netstandard2.1/SimpleInjector.xml",
+        "simpleinjector.5.4.1.nupkg.sha512",
+        "simpleinjector.nuspec",
+        "simpleinjector.png"
+      ]
+    },
     "System.Buffers/4.5.1": {
       "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "type": "package",
@@ -2475,6 +2571,65 @@
         "system.codedom.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.ComponentModel/4.0.1": {
+      "sha512": "oBZFnm7seFiVfugsIyOvQCWobNZs7FzqDV/B7tx20Ep/l3UUFCPDkdTnCNaJZTU27zjeODmy2C/cP60u3D4c9w==",
+      "type": "package",
+      "path": "system.componentmodel/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.ComponentModel.dll",
+        "lib/netstandard1.3/System.ComponentModel.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.ComponentModel.dll",
+        "ref/netcore50/System.ComponentModel.xml",
+        "ref/netcore50/de/System.ComponentModel.xml",
+        "ref/netcore50/es/System.ComponentModel.xml",
+        "ref/netcore50/fr/System.ComponentModel.xml",
+        "ref/netcore50/it/System.ComponentModel.xml",
+        "ref/netcore50/ja/System.ComponentModel.xml",
+        "ref/netcore50/ko/System.ComponentModel.xml",
+        "ref/netcore50/ru/System.ComponentModel.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.xml",
+        "ref/netstandard1.0/System.ComponentModel.dll",
+        "ref/netstandard1.0/System.ComponentModel.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.4.0.1.nupkg.sha512",
+        "system.componentmodel.nuspec"
       ]
     },
     "System.Configuration.ConfigurationManager/5.0.0": {
@@ -3796,22 +3951,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "EcommerceLibrary/1.0.0": {
-      "type": "project",
-      "path": "../EcommerceLibrary/EcommerceLibrary.csproj",
-      "msbuildProject": "../EcommerceLibrary/EcommerceLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "EcommerceLibrary >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
       "Microsoft.Extensions.Configuration >= 7.0.0",
-      "Microsoft.Extensions.Configuration.Json >= 7.0.0"
+      "Microsoft.Extensions.Configuration.Json >= 7.0.0",
+      "MvvmLightLibsStd10 >= 5.4.1.1",
+      "SimpleInjector >= 5.4.1"
     ]
   },
   "packageFolders": {
@@ -3846,11 +3997,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj": {
-              "projectPath": "C:\\Users\\HP\\Desktop\\Portfolio-Ecommerce\\EcommerceLibrary\\EcommerceLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -3890,6 +4037,14 @@
           "Microsoft.Extensions.Configuration.Json": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "MvvmLightLibsStd10": {
+            "target": "Package",
+            "version": "[5.4.1.1, )"
+          },
+          "SimpleInjector": {
+            "target": "Package",
+            "version": "[5.4.1, )"
           }
         },
         "imports": [

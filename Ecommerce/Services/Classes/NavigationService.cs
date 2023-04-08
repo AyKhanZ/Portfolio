@@ -1,8 +1,10 @@
-﻿using UserEcommerceApp.Message;
+﻿using DbEcommerceApp.Message;
 using UserEcommerceApp.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+
 namespace UserEcommerceApp.Services.Classes;
+
 internal class NavigationService : INavigationService
 {
     private readonly IMessenger _messenger;

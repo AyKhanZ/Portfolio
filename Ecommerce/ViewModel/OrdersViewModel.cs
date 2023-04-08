@@ -6,7 +6,7 @@ using GalaSoft.MvvmLight.Messaging;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using UserEcommerceApp.Message;
+using DbEcommerceApp.Message;
 using UserEcommerceApp.Services.Classes;
 using UserEcommerceApp.Services.Interfaces;
 

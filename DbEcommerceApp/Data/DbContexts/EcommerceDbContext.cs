@@ -90,7 +90,7 @@ public class EcommerceDbContext : DbContext
         {
             entity.HasKey(p => p.Id); 
             entity.Property(p => p.Price).IsRequired(); 
-            entity.Property(p => p.Image).IsRequired().HasMaxLength(100); 
+            entity.Property(p => p.Image).IsRequired(); 
             entity.Property(p => p.Name).IsRequired().HasMaxLength(50); 
             entity.Property(p => p.Make).IsRequired().HasMaxLength(25); 
             entity.Property(p => p.Description).IsRequired().HasMaxLength(1000);
@@ -115,7 +115,7 @@ public class EcommerceDbContext : DbContext
             entity.Property(u => u.Surname).IsRequired().HasMaxLength(30);
             entity.Property(u => u.Password).IsRequired().HasMaxLength(30);
             entity.Property(u => u.Email).IsRequired().HasMaxLength(50);
-            entity.Property(u => u.Icon).HasMaxLength(200);
+            entity.Property(u => u.Icon).IsRequired();
             entity.Property(u => u.IsAdmin);
              
 
@@ -141,7 +141,6 @@ public class EcommerceDbContext : DbContext
             entity.HasOne(b => b.User)
                   .WithMany(u => u.Baskets)
                   .HasForeignKey(b => b.UserId);
-
         });
 
 

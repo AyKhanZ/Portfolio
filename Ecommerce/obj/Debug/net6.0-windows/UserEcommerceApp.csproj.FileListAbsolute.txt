@@ -544,9 +544,7 @@ C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\runti
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\DbEcommerceApp.dll
-C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\EcommerceLibrary.dll
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\DbEcommerceApp.pdb
-C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\bin\Debug\net6.0-windows\EcommerceLibrary.pdb
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\UserEcommerceApp.csproj.AssemblyReference.cache
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\View\CardView.g.cs
 C:\Users\HP\Desktop\Portfolio-Ecommerce\Ecommerce\obj\Debug\net6.0-windows\View\HomeView.g.cs

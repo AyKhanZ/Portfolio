@@ -20,10 +20,8 @@
   </PackageReference>
   <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
   <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\EcommerceLibrary\EcommerceLibrary.csproj" />
+  <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+  <PackageReference Include="SimpleInjector" Version="5.4.1" />
   </ItemGroup>
 
   <ItemGroup>

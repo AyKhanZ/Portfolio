@@ -9,7 +9,6 @@
       "UserEcommerceApp/1.0.0": {
         "dependencies": {
           "DbEcommerceApp": "1.0.0",
-          "EcommerceLibrary": "1.0.0",
           "MaterialDesignColors": "2.1.2",
           "MaterialDesignThemes": "4.8.0",
           "Microsoft.EntityFrameworkCore.Design": "7.0.4",
@@ -751,19 +750,15 @@
       },
       "DbEcommerceApp/1.0.0": {
         "dependencies": {
-          "EcommerceLibrary": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
           "Microsoft.Extensions.Configuration": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0"
+          "Microsoft.Extensions.Configuration.Json": "7.0.0",
+          "MvvmLightLibsStd10": "5.4.1.1",
+          "SimpleInjector": "5.4.1"
         },
         "runtime": {
           "DbEcommerceApp.dll": {}
-        }
-      },
-      "EcommerceLibrary/1.0.0": {
-        "runtime": {
-          "EcommerceLibrary.dll": {}
         }
       }
     }
@@ -1342,11 +1337,6 @@
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
     },
     "DbEcommerceApp/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "EcommerceLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -7,7 +7,7 @@ public class Product
     public string Name { get; set; } = null!;
     public string Make { get; set; } = null!;
     public string Description { get; set; } = null!;
-    public string Image { get; set; } = null!;
+    public byte[] Image { get; set; } = null!;
     
 
     public int CategoryId { get; set; }

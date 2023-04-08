@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DbEcommerceApp\DbEcommerceApp.csproj" />
-    <ProjectReference Include="..\EcommerceLibrary\EcommerceLibrary.csproj" />
   </ItemGroup>
 
 

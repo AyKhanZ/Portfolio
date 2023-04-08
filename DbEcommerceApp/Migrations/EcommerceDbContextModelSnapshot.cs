@@ -145,10 +145,9 @@ namespace DbEcommerceApp.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<string>("Image")
+                    b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Make")
                         .IsRequired()
@@ -183,10 +182,9 @@ namespace DbEcommerceApp.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Icon")
+                    b.Property<byte[]>("Icon")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");

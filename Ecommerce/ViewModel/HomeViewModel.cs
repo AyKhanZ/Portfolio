@@ -7,35 +7,45 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
-using UserEcommerceApp.Message;
+using DbEcommerceApp.Message;
+using UserEcommerceApp.Services.Classes;
 using UserEcommerceApp.Services.Interfaces;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace UserEcommerceApp.ViewModel;
 
 public class HomeViewModel : ViewModelBase
-{
-    public Uri? UserIcon { get; set; }
+{ 
+    public BitmapImage? UserIcon { get; set; } = new();
     public User? User { get; set; } = new();
     public ObservableCollection<Category> Categories { get; set; } = new();
+
     public ObservableCollection<Product> Products { get; set; } = new();
-    public Category SelectedCategory { get; set; } = new();
+    public ObservableCollection<Product> SearchResults { get; set; } = new();
+    public string? SearchText { get; set; }
+
 
     private readonly INavigationService? _navigationService;
 
     private readonly IMessenger? _messenger;
 
+
     public HomeViewModel(INavigationService navigationService, IMessenger messenger)
     {
         using (var context = new EcommerceDbContext())
         {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList(); 
+            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
 
             Categories = new ObservableCollection<Category>(categoriesFromDb);
-             
+
             foreach (var category in Categories)
             {
-                Products = new ObservableCollection<Product>(category.Products!.ToList());
+                if (category.Name == Categories[0].Name)
+                {
+                    Products = new(category.Products!);
+                    SearchResults = new(Products);
+                }
             }
         }
         _navigationService = navigationService;
@@ -43,7 +53,19 @@ public class HomeViewModel : ViewModelBase
         _messenger.Register<ParameterMessage>(this, param =>
         {
             User = param?.Message as User;
-            if (User?.Icon != null) UserIcon = new Uri(User?.Icon!); 
+            // IMAGE
+            if (User!.Icon != null)
+            {
+                using (MemoryStream stream = new MemoryStream(User!.Icon))
+                {
+                    BitmapImage _image = new();
+                    _image.BeginInit();
+                    _image.CacheOption = BitmapCacheOption.OnLoad;
+                    _image.StreamSource = stream;
+                    _image.EndInit();
+                    UserIcon = _image;
+                }
+            }
         });
     }
 
@@ -63,10 +85,31 @@ public class HomeViewModel : ViewModelBase
     }
     #endregion
 
-    #region RelayCommands
-    public RelayCommand ExitCommand => new(() =>
+    #region SelectedCategory FullProp
+    private Category _selectedCategory;
+    public Category SelectedCategory
     {
-        _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage { Message = User });
+        get => _selectedCategory;
+        set
+        {
+            _selectedCategory = value;
+            foreach (var category in Categories)
+            {
+                if (category.Name == _selectedCategory.Name)
+                {
+                    Products = new(category.Products!);
+                    SearchResults = new(Products);
+                }
+            }
+        }
+    }
+    #endregion
+
+
+    #region RelayCommands
+    public RelayCommand SearchProductCommand => new(() =>
+    {
+        SearchResults = SearchServices.SearchInHomeView(SearchText!, SearchResults, Products);
     });
 
     public RelayCommand MyCardsCommand => new(() =>
@@ -84,5 +127,9 @@ public class HomeViewModel : ViewModelBase
         _navigationService?.NavigateTo<OrdersViewModel>(new ParameterMessage { Message = User });
     });
 
+    public RelayCommand ExitCommand => new(() =>
+    {
+        _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage { Message = User });
+    });
     #endregion
 }

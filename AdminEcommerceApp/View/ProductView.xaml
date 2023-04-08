@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="AdminEcommerceApp.View.ProductView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdminEcommerceApp.View"
+             mc:Ignorable="d" 
+             
+             xmlns:mD="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:AdminEcommerceApp.ViewModel"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="14"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="Transparent"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             Height="650" Width="920" 
+             d:DataContext="{d:DesignInstance vm:ProductViewModel}"
+             Name="AdminProductView">
+    <StackPanel Orientation="Vertical"> 
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="700" Height="500">
+            <DockPanel Height="210" Margin="0 30 0 0">
+                <Border DockPanel.Dock="Top" Width="180" Height="160" CornerRadius="15" BorderThickness="1.6" BorderBrush="White">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding image}"/>
+                    </Border.Background>
+                </Border> 
+                <Button DockPanel.Dock="Bottom" Command="{Binding ImageDownoload}" 
+                        mD:ButtonAssist.CornerRadius="10" Height="30" Width="90" 
+                        Margin="0,0,0,0" Background="#FF05AF00" BorderBrush="#FF05AF00">
+                    <mD:PackIcon Kind = "FileImage" Width="25" Height="23"/>
+                </Button>
+            </DockPanel>
+            <StackPanel VerticalAlignment="Center" Height="270" Margin="25 0 25 0">
+                    
+                <StackPanel Margin="0 5">
+                    <TextBlock FontSize="18" Text="Name: " 
+                               Width="120" Height="25" Foreground="White" HorizontalAlignment="Left"/>
+                    <TextBox FontSize="18" Text="{Binding Product.Name }" 
+                             Foreground="White" Background="#FF484848"
+                             Height="25" Width="350" HorizontalAlignment="Left"/>
+                </StackPanel>
+                    
+                    
+                <StackPanel Margin="0 5">
+                    <TextBlock FontSize="18" Text="Description:" Height="20" Width="120"
+                               Foreground="White" HorizontalAlignment="Left"/>
+                    <TextBox FontSize="18" Text="{Binding Product.Description }" 
+                             Foreground="White" Background="#FF484848" Height="50" Width="450" HorizontalAlignment="Left"/>
+                </StackPanel>
+                    
+                    
+                <StackPanel Margin="0 5">
+                    <TextBlock FontSize="18" Width="60" Height="25" Text="Mark: " 
+                               HorizontalAlignment="Left" Foreground="White"/>
+                    <TextBox FontSize="18" Text="{Binding Product.Make }" Height="25" Width="350" 
+                             Foreground="White" Background="#FF484848" HorizontalAlignment="Left"/>
+                </StackPanel>
+                    
+                    
+                <Grid Margin="0 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <TextBlock FontSize="18" Width="90" Height="25"  
+                                   HorizontalAlignment="Left" Foreground="White" Text="Category: " />
+                         
+                        <Border Background="white" CornerRadius="10" Height="25" Width="180" HorizontalAlignment="Left">
+                            <ComboBox Height="25" FontSize="16"
+                                      Margin="10 0 10 0" DisplayMemberPath="Name" Foreground="Black" BorderBrush="Black" 
+                                      mD:HintAssist.Hint="Laptops"
+                                      mD:ComboBoxAssist.ShowSelectedItem="True"
+                                      ItemsSource="{Binding Categories}" 
+                                      SelectedItem="{Binding SelectedCategory}" />
+                        </Border>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="1">
+                        <TextBlock FontSize="20" HorizontalAlignment="Left" Foreground="White"
+                               Width="70" Height="28" Text="Price: " />
+                        <TextBox FontSize="18" Text="{Binding Product.Price}" Height="25" Width="150" 
+                             Foreground="White" Background="#FF484848" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </StackPanel> 
+        
+        <Grid Margin="50 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Height="50" Width="90" 
+                                mD:ButtonAssist.CornerRadius="15" Background="#FF4E93FF"
+                                Command="{Binding BackToAllProductsCommand}"  
+                                HorizontalAlignment="Center" BorderBrush="#FF4E93FF">
+                <mD:PackIcon Kind="ArrowBack"
+                                     Foreground="White"
+                                     Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+ 
+
+            <Button Grid.Column="2" mD:ButtonAssist.CornerRadius="15"
+                Margin="20" Width="300" Height="50" Content="Save changes" FontSize="30"
+                HorizontalAlignment="Center" Background="#FF05AF00" Foreground="White"
+                Command="{Binding UpdateProductCommand}" BorderBrush="#FF05AF00">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+
+        </Grid>
+    </StackPanel>
+</UserControl>

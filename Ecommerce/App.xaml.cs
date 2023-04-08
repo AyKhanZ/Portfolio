@@ -5,6 +5,7 @@ using UserEcommerceApp.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using SimpleInjector; 
 using System.Windows; 
+
 namespace UserEcommerceApp;
 public partial class App : Application
 {
@@ -25,7 +26,7 @@ public partial class App : Application
         Container.RegisterSingleton<IMessenger, Messenger>();
         Container.RegisterSingleton<INavigationService, NavigationService>();
 
-        Container.RegisterSingleton<MainViewModel>();
+        Container.RegisterSingleton<ViewModel.MainViewModel>();
         Container.RegisterSingleton<LoginViewModel>(); 
         Container.Register<RegistrationViewModel>();
         Container.RegisterSingleton<HomeViewModel>();
@@ -34,7 +35,7 @@ public partial class App : Application
         Container.RegisterSingleton<CardsViewModel>();
         Container.RegisterSingleton<SelectedCardViewModel>();
         Container.RegisterSingleton<OrdersViewModel>();
-        Container.RegisterSingleton<BasketViewModel>();
+        Container.RegisterSingleton<BasketViewModel>(); 
 
         Container.Verify();
     }
@@ -43,7 +44,7 @@ public partial class App : Application
     {
         Window mainView = new MainView();
 
-        mainView.DataContext = Container?.GetInstance<MainViewModel>();
+        mainView.DataContext = Container?.GetInstance<ViewModel.MainViewModel>();
 
         mainView.ShowDialog();
     }

@@ -1,12 +1,13 @@
 ﻿using DbEcommerceApp.Data.DbContexts;
 using DbEcommerceApp.Data.Models;
+using DbEcommerceApp.Message;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using UserEcommerceApp.Message;
 using UserEcommerceApp.Services.Interfaces;
 
 namespace UserEcommerceApp.ViewModel;
@@ -33,9 +34,20 @@ public class ProductViewModel : ViewModelBase
             var UserProduct = param?.Message as UserProductParameter;
             User = UserProduct?.User;
             Product = UserProduct?.Product;
+            if (User != null && User!.Icon != null)
+            {
+                // IMAGE
+                using (MemoryStream stream = new MemoryStream(User!.Icon))
+                {
+                    BitmapImage _image = new();
+                    _image.BeginInit();
+                    _image.CacheOption = BitmapCacheOption.OnLoad;
+                    _image.StreamSource = stream;
+                    _image.EndInit();
+                    image = _image;
+                }
 
-            if (Product?.Image != null) image = new BitmapImage(new Uri(Product?.Image!));
-
+            }
         });
     }
 
@@ -50,14 +62,14 @@ public class ProductViewModel : ViewModelBase
             context.Orders.Add(Order);
             context.SaveChanges();
 
-            OrderProduct orderProduct = new() { OrderId =Order.Id, ProductId = Product!.Id };
+            OrderProduct orderProduct = new() { OrderId = Order.Id, ProductId = Product!.Id };
             context.OrderProducts.Add(orderProduct);
             context.SaveChanges();
         }
 
         UserProductParameter userProductParameter = new(User!, Product);
         _navigationService?.NavigateTo<SelectedCardViewModel>(new ParameterMessage { Message = userProductParameter });
-         
+
     });
 
 
@@ -78,13 +90,13 @@ public class ProductViewModel : ViewModelBase
             MessageBox.Show("Product has been added to basket successfully!😎👍");
         }
     });
-
-
-    #region Quantities RelayCommands
     public RelayCommand BackToShopCommand => new(() =>
     {
         _navigationService?.NavigateTo<HomeViewModel>(new ParameterMessage { Message = User });
     });
+
+
+    #region Quantities RelayCommands
 
     public RelayCommand DownQuantityCommand => new(() =>
     {
