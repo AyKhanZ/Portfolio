@@ -39,12 +39,12 @@ public class AllProductsViewModel:ViewModelBase
             Categories = new ObservableCollection<Category>(categoriesFromDb);
 
             foreach (var category in Categories)
-            {
+            { 
                 if (category.Name == Categories[0].Name)
                 {
                     Products = new(category.Products!);
                     SearchResults = new(Products);
-                }
+                } 
             }
         }
         _navigationService = navigationService;
