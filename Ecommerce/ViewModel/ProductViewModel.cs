@@ -56,7 +56,7 @@ public class ProductViewModel : ViewModelBase
     {
         using (var context = new EcommerceDbContext())
         {
-            Order? Order = new() { UserId = User!.Id, Quantity = Quantity, Date = DateTime.Now, TotalPrice = Product!.Price * Quantity };
+            Order? Order = new() { UserId = User!.Id, Quantity = Quantity, Date = DateTime.Now, TotalPrice = (decimal)(Product!.Price * Quantity)};
             User?.Orders?.Add(Order);
 
             context.Orders.Add(Order);

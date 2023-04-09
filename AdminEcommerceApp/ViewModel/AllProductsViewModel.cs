@@ -31,22 +31,7 @@ public class AllProductsViewModel:ViewModelBase
 
 
     public AllProductsViewModel(INavigationService navigationService, IMessenger messenger)
-    {
-        using (var context = new EcommerceDbContext())
-        {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
-
-            Categories = new ObservableCollection<Category>(categoriesFromDb);
-
-            foreach (var category in Categories)
-            { 
-                if (category.Name == Categories[0].Name)
-                {
-                    Products = new(category.Products!);
-                    SearchResults = new(Products);
-                } 
-            }
-        }
+    { 
         _navigationService = navigationService;
         _messenger = messenger;
         _messenger.Register<ParameterMessage>(this, param =>
@@ -63,6 +48,22 @@ public class AllProductsViewModel:ViewModelBase
                     _image.StreamSource = stream;
                     _image.EndInit();
                     AdminIcon = _image;
+                }
+            }
+
+            using (var context = new EcommerceDbContext())
+            {
+                var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
+
+                Categories = new ObservableCollection<Category>(categoriesFromDb);
+
+                foreach (var category in Categories)
+                {
+                    if (category.Name == Categories[0].Name)
+                    {
+                        Products = new(category.Products!);
+                        SearchResults = new(Products);
+                    }
                 }
             }
         });
@@ -93,12 +94,15 @@ public class AllProductsViewModel:ViewModelBase
         set
         {
             _selectedCategory = value;
-            foreach (var category in Categories)
+            if (_selectedCategory != null)
             {
-                if (category.Name == _selectedCategory.Name)
+                foreach (var category in Categories)
                 {
-                    Products = new(category.Products!);
-                    SearchResults = new(Products);
+                    if (category.Name == _selectedCategory.Name)
+                    {
+                        Products = new(category.Products!);
+                        SearchResults = new(Products);
+                    }
                 }
             }
         }
@@ -113,14 +117,18 @@ public class AllProductsViewModel:ViewModelBase
     });
 
     
-    public RelayCommand AddCategoryCommand => new(() =>
+    public RelayCommand CategorySettingsCommand => new(() =>
     {
         _navigationService?.NavigateTo<AddCategoryViewModel>(new ParameterMessage());
     });
+
+
     public RelayCommand AddProductCommand => new(() =>
     {
         _navigationService?.NavigateTo<AddProductViewModel>(new ParameterMessage());
     });
+
+
     /*public RelayCommand OrdersStatusCommand => new(() =>
     {
         _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage());
@@ -133,6 +141,7 @@ public class AllProductsViewModel:ViewModelBase
     {
         _navigationService?.NavigateTo<LoginViewModel>(new ParameterMessage());
     });*/
+
 
     public RelayCommand ExitCommand => new(() =>
     {

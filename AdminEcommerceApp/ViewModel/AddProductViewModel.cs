@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
-using System.DirectoryServices;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -21,9 +21,10 @@ public class AddProductViewModel : ViewModelBase
 {
     public Product? Product { get; set; } = new();
     public User? User { get; set; } = new();
-    public BitmapImage? image { get; set; } = new(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/no_product.jpg"));
+    public BitmapImage? image { get; set; } = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/no_product.jpg"));
     public ObservableCollection<Category> Categories { get; set; } = new();
     public Category? SelectedCategory { get; set; } = new();
+    public string? Price { get; set; }
 
 
     private readonly INavigationService? _navigationService;
@@ -32,38 +33,67 @@ public class AddProductViewModel : ViewModelBase
 
 
     public AddProductViewModel(INavigationService navigationService, IMessenger messenger)
-    {
-        using (var context = new EcommerceDbContext())
-        {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
-
-            Categories = new ObservableCollection<Category>(categoriesFromDb);
-        }
+    { 
         _navigationService = navigationService;
         _messenger = messenger;
         _messenger.Register<ParameterMessage>(this, param =>
-        { 
+        {
             User = param?.Message as User;
+            using (var context = new EcommerceDbContext())
+            {
+                var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
+
+                Categories = new ObservableCollection<Category>(categoriesFromDb);
+            }
         });
     }
 
 
     public RelayCommand AddProductCommand => new(() =>
     {
-        if (SelectedCategory!.Name != null)
+        if (Product != null)
         {
-            //Product!.Category = SelectedCategory!;
-            Product!.CategoryId = SelectedCategory!.Id;
-            using (var context = new EcommerceDbContext())
+            if (SelectedCategory!.Name != null)
             {
-                context.Products.Add(Product);
-                context.SaveChanges();
+                if (Product.Image != null)
+                {
+                    if (!string.IsNullOrEmpty(Price)
+                    && !string.IsNullOrEmpty(Product.Name)
+                    && !string.IsNullOrEmpty(Product.Description)
+                    && !string.IsNullOrEmpty(Product.Make)
+                    && !string.IsNullOrEmpty(Price))
+                    {
+                        if (Regex.IsMatch(Price, @"^[0-9.]{1,15}$"))
+                        {
+                            float price;
+                            if (float.TryParse(Price, out price))
+                            {
+                                Product.Price = price;
+                                Product!.CategoryId = SelectedCategory!.Id;
+                                using (var context = new EcommerceDbContext())
+                                {
+                                    var FoundProduct = context.Products.SingleOrDefault(u => u.Name == Product!.Name);
+                                    if (FoundProduct != null) MessageBox.Show("This product already exist!");
+                                    else
+                                    {
+                                        context.Products.Add(Product);
+                                        context.SaveChanges();
+                                        MessageBox.Show("Product added successfully!");
+                                    }
+                                }
+                                Product = new();
+                                Price = "";
+                                image = new(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/no_product.jpg"));
+                            }
+                        }
+                        else MessageBox.Show("Price must contains only digits and dot!");
+                    }
+                    else MessageBox.Show("All fields are required!");
+                }
+                else MessageBox.Show("Choose image!");
             }
-            MessageBox.Show("Product added successfully!");
+            else MessageBox.Show("Choose category!");
         }
-        else MessageBox.Show("Choose category!");
-        Product = new();
-        image = new();
     });
 
 

@@ -80,7 +80,7 @@
                             </Grid.RowDefinitions>
 
                             <Button Grid.Row="0" mD:ButtonAssist.CornerRadius="15" Height="35" Width="150"
-                                        Command="{Binding AddCategoryCommand}" Content="Add category" 
+                                        Command="{Binding CategorySettingsCommand}" Content="Category settings" 
                                         Foreground="White" FontSize="16" BorderBrush="#FF673AB7" >
                                 <Button.Background>
                                     <SolidColorBrush Color="#FF673AB7"/>
@@ -214,8 +214,8 @@
                                                     Width="205" Height="230"
                                                     Padding="3" Background="#1b1b1b">
                                                 <StackPanel Orientation="Vertical">
-                                                    <DockPanel Height="130">
-                                                        <Border Height="130" Width="170" Padding="3 0 3 0"
+                                                    <DockPanel Height="170">
+                                                        <Border Height="160" Width="160" Padding="3 0 3 0"
                                                     CornerRadius="10" BorderThickness="1.6" BorderBrush="White">
                                                             <Border.Background>
                                                                 <ImageBrush Stretch="Fill" ImageSource="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>

@@ -140,10 +140,10 @@
                 
 
                 <Button Grid.Column="1" IsEnabled="{Binding IsEnabledToDelete}" mD:ButtonAssist.CornerRadius="15" Height="50" Width="150"
-                                        Command="{Binding DeleteCardCommand}" BorderBrush="Red" >
+                                        Command="{Binding DeleteCardCommand}" BorderBrush="#FFB90808" >
                     <mD:PackIcon Kind = "Delete" Height="40" Width="40" Foreground="White"/>
                     <Button.Background>
-                        <SolidColorBrush Color="#FFA20000"/>
+                        <SolidColorBrush Color="#FFB90808"/>
                     </Button.Background>
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>

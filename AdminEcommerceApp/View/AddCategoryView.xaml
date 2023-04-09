@@ -59,16 +59,28 @@
                          Foreground="White" Background="#FF484848"
                          Height="34" Width="270" HorizontalAlignment="Left"/>
             </StackPanel>
-        </Grid> 
-        
-        <Button mD:ButtonAssist.CornerRadius="15"
-            Margin="0 0 100 0" Width="200" Height="50" Content="Update" FontSize="30"
-            HorizontalAlignment="Right" Background="#FFAF7600" Foreground="White"
-            Command="{Binding UpdateCategoryCommand}" BorderBrush="#FFAF7600">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
-            </Button.Effect>
-        </Button>
+        </Grid>
+
+        <DockPanel>
+            <Button mD:ButtonAssist.CornerRadius="15" DockPanel.Dock="Left"
+                Margin="150 0 0 0" Width="200" Height="50" Content="Delete" FontSize="30"
+                HorizontalAlignment="Right" Background="#FFB90808" Foreground="White"
+                Command="{Binding DeleteCategoryCommand}" IsEnabled="{Binding IsEnabledToDelete}" BorderBrush="#FFB90808">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+            
+            
+            <Button mD:ButtonAssist.CornerRadius="15" DockPanel.Dock="Right"
+                Margin="0 0 150 0" Width="200" Height="50" Content="Update" FontSize="30"
+                HorizontalAlignment="Right" Background="#FFAF7600" Foreground="White"
+                Command="{Binding UpdateCategoryCommand}" BorderBrush="#FFAF7600">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="Black"/>
+                </Button.Effect>
+            </Button>
+        </DockPanel>
  
 
 

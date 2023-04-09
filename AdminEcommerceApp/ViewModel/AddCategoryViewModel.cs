@@ -22,21 +22,16 @@ public class AddCategoryViewModel : ViewModelBase
     public Category NewCategory { get; set; } = new();
     public Category ChangedCategory { get; set; } = new();
     public ObservableCollection<Category> Categories { get; set; } = new();
+    public bool IsEnabledToDelete { get; set; }
 
 
     private readonly INavigationService? _navigationService;
 
     private readonly IMessenger? _messenger;
 
-    public AddCategoryViewModel(INavigationService navigationService, IMessenger messenger)
-    {
-        NewCategory = new();
-        using (var context = new EcommerceDbContext())
-        {
-            var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
 
-            Categories = new ObservableCollection<Category>(categoriesFromDb);
-        }
+    public AddCategoryViewModel(INavigationService navigationService, IMessenger messenger)
+    {  
         _navigationService = navigationService;
         _messenger = messenger;
         _messenger.Register<ParameterMessage>(this, param =>
@@ -44,6 +39,12 @@ public class AddCategoryViewModel : ViewModelBase
             var UserProduct = param?.Message as UserProductParameter;
             User = UserProduct?.User;
 
+            using (var context = new EcommerceDbContext())
+            {
+                var categoriesFromDb = context.Categories.Include(b => b.Products).ToList();
+
+                Categories = new ObservableCollection<Category>(categoriesFromDb);
+            }
             // IMAGE
             if (User != null)
             {
@@ -67,11 +68,24 @@ public class AddCategoryViewModel : ViewModelBase
         set
         {
             _selectedCategory = value;
+            IsEnabledToDelete = true;
         }
     }
     #endregion
 
-
+    public RelayCommand DeleteCategoryCommand => new(() =>
+    {
+        using (var context = new EcommerceDbContext())
+        {
+            context.Products.RemoveRange(_selectedCategory.Products!);
+            context.Categories.Remove(_selectedCategory!);
+            context.SaveChanges();
+            MessageBox.Show($"Category {_selectedCategory.Name} deleted successfully!");
+        }
+        IsEnabledToDelete = false;
+        Categories.Remove(SelectedCategory);
+        ChangedCategory = new();
+    });
 
     public RelayCommand UpdateCategoryCommand => new(() =>
     {
